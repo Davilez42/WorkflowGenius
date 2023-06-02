@@ -51,7 +51,22 @@ app.post("/validate_user", async (req,res)=>{
         res.status(500).json({"messageError":error.message}); 
    }
 })
-app.post('/register_User')
+app.post('/register_User',(req,res)=>{
+   try {
+    const datos =  req.body;
+    for(key in datos){
+        if(datos[key]===''){
+            return res.status(500).json({"messageError":"campos vacios en el dato enviado"})
+        }
+    }
+    repositoryUser.insertUser(datos)
+    console.log(datos);
+    return res.status(200).send("exitoso")
+   } catch (error) {
+    res.sendStatus(400);
+   }
+  
+})
 
 
 

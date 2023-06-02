@@ -49,7 +49,6 @@ export const Form_selected = ({data})=>{
                 console.log('entra') 
                 if(text === 'Do you need a count?' ){
                     setForm(FormRegister)
-
                     setText('Do you have a count?')
                     setHere('Loguin Here')  
                 }else{
@@ -58,7 +57,7 @@ export const Form_selected = ({data})=>{
                     setHere('Register Here') 
                       
                 }}}          
-                className="here" > {here}</b> </p>
+                    className="here" > {here}</b> </p>
             </div>
             </>
 

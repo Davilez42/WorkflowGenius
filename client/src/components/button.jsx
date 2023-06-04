@@ -1,7 +1,5 @@
 
 import PropTypes from 'prop-types'
-
-
 const loguinHandler = async ()=>{
     const username = document.querySelector('#input_username').value
     const password = document.querySelector('#input_password').value
@@ -46,13 +44,11 @@ const loguinHandler = async ()=>{
  }
 
 
+const registerHandler=()=>{
+    
+}
 
-
-export const Button = ({handler_view,value,id})=>{
-    const registerHandler = ()=>{
-        handler_view(12)
-        alert('enviando datos de registro')
-    }
+export const Button = ({value,id})=>{
     return <input onClick={id === "btn_loguin" ?  loguinHandler :registerHandler } className="btn" id={id} type="button" value={value}></input>
 }
 

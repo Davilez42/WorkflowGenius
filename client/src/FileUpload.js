@@ -1,8 +1,8 @@
 const sendFile = async  event  =>{
     const archivo =  event.target.files
     //verifico
-    ar = archivo[0]
-    if (!["image/png","image/jpeg"].includes(ar.type)){
+    archivo = archivo[0]
+    if (!["image/png","image/jpeg"].includes(archivo.type)){
         alert("Porfavor sube una imagen!")
         return
     }

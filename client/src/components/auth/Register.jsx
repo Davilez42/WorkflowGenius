@@ -17,7 +17,7 @@ export default function Register(){
                 </form>
                 </div>
                 <div className='box_info'> 
-                   <p>Do you have a count? <NavLink className="here" to='/' >Loguin here</NavLink> </p>
+                   <p>Already have an account ? <NavLink className="here" to='/' >Loguin here</NavLink> </p>
                 </div>
                 </>
         }

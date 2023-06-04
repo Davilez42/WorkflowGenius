@@ -42,7 +42,7 @@ export default  function Loguin(){
             </div>
             <div className='box_info'> 
 
-            <p>Do you not have a count? <NavLink className="here" to='/register' >Register here</NavLink> </p>
+            <p>Don't have an account ? <NavLink className="here" to='/register' >Register here</NavLink> </p>
              </div>
              </>
         }

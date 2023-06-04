@@ -1,7 +1,5 @@
-import { NavLink } from 'react-router-dom'
-import {Button} from '../button'
+import { NavLink} from 'react-router-dom'
 import React from 'react'
-
 export default function Register(){   
     return      <>
                 <div className='container_form'>
@@ -15,7 +13,7 @@ export default function Register(){
                 <input id="input_email" className="input input-email" type="text" placeholder="Email@some.com"></input>
                 <label htmlFor="input_password">password</label>
                 <input id="input_password" className="input input-password" type="password" placeholder="Password"></input>                               
-                <Button    value="Register" id='btn_register'/>
+                <a className='btn'>Register</a>
                 </form>
                 </div>
                 <div className='box_info'> 

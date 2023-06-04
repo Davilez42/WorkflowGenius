@@ -3,7 +3,7 @@ body {
     margin: 0;
     background: #0d1117;
 
-
+    color:white;
 
 }
 
@@ -76,6 +76,14 @@ form a {
     text-align: center;
     color: white;
 }
+
+.container_message{
+    text-align: center;
+    color: #a93228;
+    background-color: #1d1d1d;
+
+}
+
 p{
     cursor:default;
     margin: 0;
@@ -91,8 +99,13 @@ p{
 .btn {
     display: block;
     width: 40%;
-
-    height: 30px;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 5px;
+    cursor: pointer;
+    color: black;
+    background-color: #dcdbdb;
+    height: 25px;
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;

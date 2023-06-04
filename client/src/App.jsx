@@ -1,34 +1,26 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import Loguin from "./components/auth/Loguin";
 import Register from "./components/auth/Register";
+import Perfil from './Pages/perfil'
 
-const routes = (
-  <Routes>
-    < Route 
-    path="/" 
-    element={<Loguin />} 
-    />
-
-    < Route 
-    path="/register"
-    element={<Register />} 
-    />
-
-    < Route
-      path="*"
-      element={
-        <div>
-          <h1>Not found page</h1>
-        </div>
-      }
-    />
-
-  </Routes>
-);
+const routes = createBrowserRouter([
+            {
+            path:'/register',
+            element:<Register/>
+            },
+            {
+            path:'/',
+            element:<Loguin/>
+            },
+            {
+                path:'/perfil/:id_user',
+                element:<Perfil/>
+            }
+])
 export default function App() {
   return (
     <>
-      <BrowserRouter>{routes}</BrowserRouter>
+    <RouterProvider router={routes} />
     </>
   );
 }

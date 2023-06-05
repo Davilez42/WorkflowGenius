@@ -1,0 +1,24 @@
+[{
+  "username":"Davilez42",
+  "password":"123456789",
+  "first_Names":"Jose",
+  "Last_Names":"Suarez",
+  "email":"josedavid4227@gmail.com",
+  "created_at":new Date(),
+  "state_user":true,
+  "recent_sesion":new Date("2023/06/03"),
+  "id_avatar":"default.png"
+  }
+  
+  ,
+{
+    "username":"juandaniel23",
+    "password":"123456789",
+    "first_Names":"Daniel Giraldo",
+    "Last_Names":"gomez torba",
+    "email":"danielgiraldo42@outlook.com",
+    "created_at":new Date("2023/02/01"),
+    "state_user":true,
+    "recent_sesion":"2023/06/01",
+    "id_avatar":"default.png"}
+]

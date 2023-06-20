@@ -1,13 +1,14 @@
 const express = require("express")
 const cors = require("cors")
-const colors =  require('colors')
 const fileupload = require('express-fileupload');
-const FileController = require('./controllers/FileController');
-const controllerUser = require('./routes/authRoutes')
-const routeNotFoundHandler = require('./controllers/routeNotFoundHandler')
-const logger = require('./middlewares/logger')
-const serviceWebAccessToken = require('./middlewares/ServiceWebAccessToken')
-const config = require('./config')
+const FileController = require('./src/controllers/FileController');
+const authRoutes = require('./src/routes/authRoutes')
+const userRoutes = require('./src/routes/userRoutes')
+const dashBoardRoutes = require('./src/routes/dashBoardRoutes')
+const routeNotFoundHandler = require('./src/controllers/routeNotFoundHandler')
+const logger = require('./src/middlewares/logger')
+const serviceWebAccessToken = require('./src/middlewares/ServiceWebAccessToken')
+const config = require('./src/configs/config')
 const app =  express()
 
 const fileController = new FileController()
@@ -19,12 +20,14 @@ app.use(express.urlencoded({ extended: true }) );
 app.use(fileupload())
 app.use(express.static('./uploads'))
 
-app.use(controllerUser)
+//RUTAS 
+app.use(authRoutes)
+//app.use(userRoutes)
+app.use(dashBoardRoutes)
+
 app.post("/upload_file",serviceWebAccessToken.validateToken,fileController.uploadFile)
 app.use(routeNotFoundHandler)
 
 
-app.listen(config.PORT,config.HOST,()=>{
-    console.log(`Server Listen on: \n PORT:${config.PORT} \n HOST:${config.HOST}`);
-})
 
+module.exports = app

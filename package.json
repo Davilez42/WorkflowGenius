@@ -2,7 +2,7 @@
   "name": "plantillaproyectos",
   "version": "1.0.0",
   "description": "",
-  "main": "./server/app.js",
+  "main": "./server/index.js",
   "scripts": {
     "dev": "nodemon app.js"
   },

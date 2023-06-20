@@ -1,4 +1,5 @@
 class FileController {
+  
   uploadFile = async (req, res, next) => {
     const archivo = req.files.archivo;
     const filename = archivo.name;

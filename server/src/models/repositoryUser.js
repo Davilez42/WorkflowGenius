@@ -1,4 +1,4 @@
-const {getClientMongo} = require('../util/bd')
+const {getClientMongo} = require('../services/bd')
 const {haspassword} = require('../services/serviceHashPassword')
 
 
@@ -7,11 +7,10 @@ const getUser = async(username)=>{
         await client.connect()
         return client.db('webadtasker').collection("users").findOne({username})     
 }
-
 const insertUser = async(datos)=> {
         const client = getClientMongo()
-        await client.connect()
-      
+        await client.connect()    
+        
         const respuesta = await client.db('webadtasker').collection("users").find({$or:[{"username":datos.username},{"email":datos.email}]} ).toArray()       
         const us_ = respuesta.filter(d=>d.username===datos.username)
         const email_ = respuesta.filter(d=>d.email===datos.email)
@@ -29,7 +28,10 @@ const insertUser = async(datos)=> {
         datos["id_avatar"]="default.png";
         const hashed_password = await haspassword(datos["password"])
         datos["password"] = hashed_password;
+
         const resp_insert = await client.db('webadtasker').collection("users").insertOne(datos) 
+        await client.db('webadtasker').collection("dashboard").insertOne({"id_aut": resp_insert.insertedId ,"todo":[],"inprocess":[],"completed":[]})
+       
         return {"succes":true,resp_insert}
 }
 module.exports = {

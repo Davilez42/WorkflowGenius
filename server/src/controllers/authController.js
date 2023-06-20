@@ -39,12 +39,10 @@ const validateUser = async (req,res)=>{
     }
     if(datos.username == '' || datos.password == '' || datos.first_name=='' || datos.last_name=='' || datos.email==''){
         throw new Error('Error: campos vacios')
-    }
-    
+    }   
     if(datos.username.split(' ').length>1 || datos.password.split(' ').length>1 || datos.email.split(' ').length>1){
         throw new Error('Error: formato incorrecto')
     }
-
     const respuesta =  await  repositoryUser.insertUser(datos)
     if(!respuesta.succes){
         return res.status(200).json(respuesta)

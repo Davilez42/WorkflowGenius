@@ -1,24 +1,29 @@
-[{
-  "username":"Davilez42",
-  "password":"123456789",
-  "first_Names":"Jose",
-  "Last_Names":"Suarez",
-  "email":"josedavid4227@gmail.com",
-  "created_at":new Date(),
-  "state_user":true,
-  "recent_sesion":new Date("2023/06/03"),
-  "id_avatar":"default.png"
-  }
-  
-  ,
+{"username":"Davilez42","password":"123456789","first_Names":"Jose","Last_Names":"Suarez","email":"josedavid4227@gmail.com","created_at":new Date(),"state_user":true,"recent_sesion":new Date("2023/06/03"),"id_avatar":"default.png","tasks":{"todo":[{"titulo":"Terminate backend","Descriptcion":"se debe implementar el backend para que el frontend pueda utilizarlo"}],"progress":[],"terminate":[]}}
+
+
+
+db.profesores.update({"_id":ObjectId("6480d551502221b010674dfc")},{$pull:{"tasks.todo":{"_id":ObjectId("6480d8a8502221b010674dfd")}}})
+
+
+
 {
-    "username":"juandaniel23",
-    "password":"123456789",
-    "first_Names":"Daniel Giraldo",
-    "Last_Names":"gomez torba",
-    "email":"danielgiraldo42@outlook.com",
-    "created_at":new Date("2023/02/01"),
-    "state_user":true,
-    "recent_sesion":"2023/06/01",
-    "id_avatar":"default.png"}
-]
+    "id_aut":ObjectId("647dddd5e7a313d7d61e6a4e"),
+    todo: [
+      {
+        titulo: 'Terminate backend',
+        Descriptcion: 'se debe implementar el backend para que el frontend pueda utilizarlo'
+      },
+      {
+        titulo: 'atender llamda',
+        descripcion: 'responder llamada de mama'
+      }
+    ],
+    progress: [],
+    terminate: []
+  }
+
+
+
+  { "_id":new ObjectId(),
+    "titulo":"Terminate backend",
+  "Descriptcion":"se debe implementar el backend para que el frontend pueda utilizarlo"}

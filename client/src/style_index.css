@@ -1,9 +1,9 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    background: #0d1117;
+    background: #ffffff;
 
-    color:white;
+    color:rgb(0, 0, 0);
 
 }
 
@@ -11,15 +11,15 @@ body {
 
 
 .container_form {
-    color: #dcdbdb;
-    background-color: #161b22;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
     width: 30%;
     filter: blur(.10);
     margin-left: auto;
     margin-right: auto;
     border-radius: 1px;
     margin-top: 4rem;
-    border: .001rem solid #28323e;
+    border: .001rem solid #cccccc;
     height: min-content;
 }
 
@@ -40,7 +40,7 @@ form a {
 }
 
 .container_form h3 {
-    color: aliceblue;
+    color: rgb(0, 0, 0);
     font-size: 1.7rem;
     text-align: center;
 }
@@ -49,10 +49,10 @@ form a {
     display: block;
     height: 25px;
     width: 240px;
-    color: aliceblue;
-    background-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     border-radius: 3px;
-    border: 1px solid rgb(74, 74, 74);
+    border: 1px solid rgb(195, 195, 195);
     transition: border 0.5s;
     margin-bottom: 10px;
     margin-top: 3px;
@@ -69,18 +69,18 @@ form a {
     width: 30%;
     margin: 0 auto;
     margin-top: 10px;
-    border: .001rem solid #28323e;
+    border: .001rem solid #b8b8b8;
     font-size: 1rem;
     height: min-content;
     padding: 2px;
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .container_message{
     text-align: center;
     color: #a93228;
-    background-color: #1d1d1d;
+    background-color: #ffffff;
 
 }
 
@@ -103,8 +103,8 @@ p{
     text-align: center;
     padding-top: 5px;
     cursor: pointer;
-    color: black;
-    background-color: #dcdbdb;
+    color: rgb(255, 255, 255);
+    background-color: #1a30f4;
     height: 25px;
     margin: 0 auto;
     margin-top: 20px;

@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs')
+
 const validateHash = async(password_bd,password_client)=>{
     return bcrypt.compare(password_client,password_bd);
 }

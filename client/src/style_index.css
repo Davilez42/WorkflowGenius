@@ -7,9 +7,6 @@ body {
 
 }
 
-
-
-
 .container_form {
     color: rgb(0, 0, 0);
     background-color: #ffffff;
@@ -77,14 +74,15 @@ form a {
     color: rgb(0, 0, 0);
 }
 
-.container_message{
+.container_message p{
     text-align: center;
-    color: #a93228;
+    color: #ff1500;
     background-color: #ffffff;
 
 }
 
-p{
+.box_info p{
+    color: black;
     cursor:default;
     margin: 0;
     font-size: 14px;
@@ -123,11 +121,8 @@ p{
     border: 1px solid rgb(61, 215, 250);
 }
 
-
-
-
 .input::placeholder {
-    color: #dcdbdb89;
+    color: #1c1c1c89;
     font-size: 12px;
 }
 

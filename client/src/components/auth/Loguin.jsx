@@ -13,11 +13,11 @@ export default  function Loguin(){
         }
         
         const senDate = ()=>{
-             if(username === ''){
+             if(username.trim() === ''){
                 setMessage('Porfavor ingrese un nombre de usuario')
                 return
              } 
-             if(password === ''){
+             if(password.trim() === ''){
                 setMessage('Porfavor ingrese una contraseña')
                 return
              }    

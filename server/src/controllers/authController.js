@@ -1,6 +1,6 @@
-const repositoryUser = require('../models/repositoryUser')
+const serviceUsers = require('../services/users.service')
 const serviceHashPassword = require('../services/serviceHashPassword') 
-const serviceWebAccessToken = require('../middlewares/ServiceWebAccessToken')
+const generateToken = require('../services/generateToken.service')
 
 const validateUser = async (req,res)=>{   
     try {
@@ -14,18 +14,17 @@ const validateUser = async (req,res)=>{
         if(user.username.split(' ').length>1 || user.password.split(' ').length>1){
             throw new Error('Error: formato incorrecto')
         }
-         const response_bd = await repositoryUser.getUser(user.username);
+         const response_bd = await serviceUsers.getUser(user.username);
          if (!response_bd) {
              return res.status(200).json({"username":[false,user.username]})
          }    
          if(! await serviceHashPassword.validateHash(response_bd.password,user.password)){
              return res.status(200).json({"id_user":response_bd._id,"username":[true,response_bd.username],"password":false})
          }
-         const token = serviceWebAccessToken.generateAccessToken(user);
+         const token = generateToken(user);
          return res.status(200).json({"id_user":response_bd._id,"username":[true,user.username],"password":true,"token":token}) 
     
      } catch (error) {
-         //console.log(error)
          res.status(500).json({"messageError":error.message}); 
     }
  }
@@ -43,11 +42,11 @@ const validateUser = async (req,res)=>{
     if(datos.username.split(' ').length>1 || datos.password.split(' ').length>1 || datos.email.split(' ').length>1){
         throw new Error('Error: formato incorrecto')
     }
-    const respuesta =  await  repositoryUser.insertUser(datos)
+    const respuesta =  await  serviceUsers.insertUser(datos)
     if(!respuesta.succes){
         return res.status(200).json(respuesta)
     }
-     const token = serviceWebAccessToken.generateAccessToken(datos);
+     const token = generateToken(datos);
      return res.status(200).json({"id_user":respuesta.resp_insert.insertedId,"username":[true,datos.username],"password":true,"token":token})
     } catch (error) {
          return res.status(500).json({"messageError":error.message})

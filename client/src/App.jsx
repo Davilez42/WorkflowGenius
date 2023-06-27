@@ -2,10 +2,10 @@ import { createBrowserRouter,RouterProvider,redirect} from "react-router-dom";
 import Loguin from "./components/auth/Loguin";
 import Register from "./components/auth/Register";
 import Perfil from './Pages/perfil'
-import Dashboard from "./components/dashboard";
-
-const routes = createBrowserRouter([
-           
+import Main from "./components/Main";
+import Dashboards from "./components/Dashboards";
+import Tasks from './components/Tasks'
+const routes = createBrowserRouter([          
             {
             path:'/',
             element:<Loguin/>,
@@ -24,10 +24,21 @@ const routes = createBrowserRouter([
               element:<Perfil/>,
               children:[
                 {
-                  path:'dashboard',
-                  element:<Dashboard/>,
-
-                },
+                  path:'main',
+                  element:<Main/>,
+                  children:[
+                    {
+                      path:'dashboards',
+                      element:<Dashboards/>,
+                    },
+                    {
+                      path:'dashboard/:id_dashboard',
+                      props:true,
+                      element:<Tasks/>,
+                    }
+                    ]
+                }
+                ,
                 {
                   path:'Perfil',
                   element:<>Perfil</>,

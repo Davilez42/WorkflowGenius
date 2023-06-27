@@ -9,7 +9,7 @@ export default  function Loguin(){
         const navigate = useNavigate()
         
         const handlerAction = (id_user)=>{
-            navigate(`/home/dashboard`)
+            navigate(`/home/main/dashboards`)
         }
         
         const senDate = ()=>{

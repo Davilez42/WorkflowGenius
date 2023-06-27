@@ -1,14 +1,8 @@
 
-import {React,useState} from 'react'
-import {NavLink,redirect,useNavigate} from 'react-router-dom'
+import {React} from 'react'
+import {NavLink,useNavigate} from 'react-router-dom'
 export default function Navbar(){
     const navigate = useNavigate()
-
-    const red = ()=>{
-        sessionStorage.removeItem('LoggedUser')
-        navigate('/loguin')
-    }
-    
     return <>
     <header>
         <nav>
@@ -16,7 +10,10 @@ export default function Navbar(){
             <li><NavLink to='/home/perfil' >Perfil</NavLink></li>
             <li><NavLink to='/home/dashboard' >Dashboard</NavLink></li>
             <li><NavLink to='/home/ayuda' >ayuda</NavLink></li>
-            <li><a onClick={red}>cerrarSesion</a></li>
+            <li><NavLink onClick={()=>{
+                sessionStorage.removeItem('LoggedUser')
+                navigate('/loguin')
+            }}>cerrarSesion</NavLink></li>
             </ul>
         </nav>
     </header>

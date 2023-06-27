@@ -10,7 +10,7 @@ export default async function  LoguinHandler(username,password,handlerMessage,ha
         body: JSON.stringify({ username, password}),
       };
 
-    const respuesta =  await fetch('http://192.168.1.7:5000/validateuser',datos)
+    const respuesta =  await fetch('http://192.168.1.7:5000/api/v1/validateuser',datos)
         if (respuesta.ok) {
             const user = await respuesta.json()
             if (user.username[0]) {
@@ -23,9 +23,7 @@ export default async function  LoguinHandler(username,password,handlerMessage,ha
             }
             else{
                 handlerMessage("El usuario No existe")
-            }
-            
-            
+            }          
         }
         else{
             const json = await  respuesta.json()

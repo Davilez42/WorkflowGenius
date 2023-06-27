@@ -4,6 +4,7 @@ const generateToken = require('../services/generateToken.service')
 
 const validateUser = async (req,res)=>{   
     try {
+        console.log('entra');
         const user = req.body;
         if(user.username == undefined || user.password == undefined){
             throw new Error('Error: Entradas incorrectas')

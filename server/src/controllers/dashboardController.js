@@ -11,8 +11,15 @@ const getDashboard = async(req,res)=>{
     }
 }
 
+const newDashboard = async()=>{
+    try {
+        //TODO
+        console.log(req.params.id_user,req.params.id_dashboard);
+    } catch (error) {
+        
+    }
+}
 
 
 
-
-module.exports = {getDashboard};
+module.exports = {getDashboard,newDashboard};

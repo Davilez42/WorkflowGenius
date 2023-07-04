@@ -18,7 +18,7 @@ export default async function  LoguinHandler(username,password,handlerMessage,ha
                     handlerMessage("La Contraseña es incorrecta")
                     return
                 }
-                window.localStorage.setItem('LoggedUser',JSON.stringify(user)) ; 
+                window.sessionStorage.setItem('LoggedUser',JSON.stringify(user)) ; 
                 handlerAction(user.id_user)        
             }
             else{

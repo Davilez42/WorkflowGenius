@@ -1,11 +1,11 @@
 const serviceUsers = require('../services/users.service')
-const serviceHashPassword = require('../services/serviceHashPassword') 
+const serviceHashPassword = require('../services/hashPassword.service') 
 const generateToken = require('../services/generateToken.service')
 
 const validateUser = async (req,res)=>{   
     try {
-        console.log('entra');
         const user = req.body;
+        //validacion de parametros
         if(user.username == undefined || user.password == undefined){
             throw new Error('Error: Entradas incorrectas')
         }
@@ -15,6 +15,7 @@ const validateUser = async (req,res)=>{
         if(user.username.split(' ').length>1 || user.password.split(' ').length>1){
             throw new Error('Error: formato incorrecto')
         }
+        //validacion de usuario
          const response_bd = await serviceUsers.getUser(user.username);
          if (!response_bd) {
              return res.status(200).json({"username":[false,user.username]})
@@ -23,7 +24,7 @@ const validateUser = async (req,res)=>{
              return res.status(200).json({"id_user":response_bd._id,"username":[true,response_bd.username],"password":false})
          }
          const token = generateToken(user);
-         return res.status(200).json({"id_user":response_bd._id,"username":[true,user.username],"password":true,"token":token}) 
+         return res.status(200).json({"id_user":response_bd._id,"username":[true,user.username],"password":true,"token":token,"id_avatar":response_bd.id_avatar}) 
     
      } catch (error) {
          res.status(500).json({"messageError":error.message}); 

@@ -1,14 +1,19 @@
-import {React,useState} from 'react'
-import {NavLink, Outlet} from 'react-router-dom'
+import {React} from 'react'
+import {NavLink,useNavigate} from 'react-router-dom'
 export default function NavbarDashboard(){
+    const navigate = useNavigate()
+    const user = JSON.parse(sessionStorage.getItem('LoggedUser'))
     return <div className='navBarDashboard'>
-     <nav>
-           
+     <nav>          
             <ul>
-            <img src="https://ik.imagekit.io/picmont/icons/default_avatar.png?updatedAt=1687206611943" className='avatar' />
-            <li><NavLink to='/home/main/perfil' >Perfil</NavLink></li>
-            <li><NavLink to='/home/main/dashboards' >Tableros</NavLink></li>
-            <li><NavLink to='/home/main/dashboards' >ayuda</NavLink></li>
+            <img src={user.id_avatar} className='avatar' />
+            <li><NavLink to='/home/main/perfil' style={{ textDecoration: 'none' }}>Perfil</NavLink></li>
+            <li><NavLink to='/home/main/dashboards' style={{ textDecoration: 'none' }}>Tableros</NavLink></li>
+            <li><NavLink to='/home/main/dashboards' style={{ textDecoration: 'none' }}>ayuda</NavLink></li>
+            <li><NavLink onClick={()=>{
+                sessionStorage.removeItem('LoggedUser')
+                navigate('/loguin')
+            }} style={{ textDecoration: 'none' }}>cerrarSesion</NavLink></li>
             </ul>
         </nav>
     </div>

@@ -1,5 +1,5 @@
 const {getClientMongo} = require('./bd')
-const {haspassword} = require('./serviceHashPassword')
+const {haspassword} = require('./hashPassword.service')
 
 
 const getUser = async(username)=>{

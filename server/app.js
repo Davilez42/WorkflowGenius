@@ -16,9 +16,5 @@ app.use(express.urlencoded({ extended: true }) );
 app.use(cors(config.CONFIG_CORS));
 app.get('/',(req,res)=>{return res.json({"message":"Welcome To Server !"})})
 app.use('/api/v1',routesv1)
-
 app.use(routeNotFoundHandler)
-
-
-
 module.exports = app

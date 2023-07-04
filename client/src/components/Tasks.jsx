@@ -1,16 +1,15 @@
 import Sesion from './Sesion'
 import { useContext } from 'react'
 import {DashboardContext} from '../context/DashboardContext'
+import { useParams } from 'react-router-dom'
 
-export default function Tasks({id_dashboard}){
+export default function Tasks(){
+    let params = useParams()
     const {dashboards} = useContext(DashboardContext)
-    const sesions = dashboards.filter(d=> d.id_ === 1321342422)[0].sesions
-    console.log(sesions);
+    let sesions = dashboards.filter(d=> d._id === params.id_dashboard)[0].sesions
         return <div className='container-tasks'>
- 
                 {
-                    sesions.map(s => <Sesion tasks={s.tasks} title = {s.nombre}/>)
-                } 
-            
+                    sesions.map(s => <Sesion id_dashboard={params.id_dashboard}  key={s._id} id_sesion={s._id} tasks={s.tasks} title = {s.nombre}/>)
+                }            
                 </div>
 }

@@ -1,39 +1,33 @@
-const {getClientMongo} = require('./bd')
-const {haspassword} = require('./hashPassword.service')
+require("./connection");
+const { haspassword } = require("./hashPassword.service");
+const userModel = require("./Models/userModel");
 
+const getUser = async (username) => {
+  const user = await userModel.findOne({ username });
+  return user;
+};
 
-const getUser = async(username)=>{
-        const client = getClientMongo()
-        await client.connect()
-        return client.db('webadtasker').collection("users").findOne({username})     
-}
-const insertUser = async(datos)=> {
-        const client = getClientMongo()
-        await client.connect()    
-        
-        const respuesta = await client.db('webadtasker').collection("users").find({$or:[{"username":datos.username},{"email":datos.email}]} ).toArray()       
-        const us_ = respuesta.filter(d=>d.username===datos.username)
-        const email_ = respuesta.filter(d=>d.email===datos.email)
+const insertUser = async (datos) => {
+  const { username, email } = datos;
+  const user = await userModel.findOne({ username });
+  const user_email = await userModel.findOne({ email });
+  if (user) {
+    return { succes: false, value: "username" };
+  }
+  if (user_email) {
+    return { succes: false, value: "email" };
+  }
+  datos["state_user"] = true;
+  datos["recent_sesion"] = new Date();
+  const hashed_password = await haspassword(datos["password"]);
+  datos["password"] = hashed_password;
 
-        if(us_.length>0){
-                return {"succes":false,"value":"username"}
-        }
-        if(email_.length>0){
-                return {"succes":false,"value":"email"}
-        }
-
-        datos["created_at"]= new Date();
-        datos["state_user"]=true;
-        datos["recent_sesion"]= new Date();
-        datos["id_avatar"]="default.png";
-        const hashed_password = await haspassword(datos["password"])
-        datos["password"] = hashed_password;
-
-        const resp_insert = await client.db('webadtasker').collection("users").insertOne(datos) 
-        await client.db('webadtasker').collection("dashboard").insertOne({"id_aut": resp_insert.insertedId ,"todo":[],"inprocess":[],"completed":[]})
-       
-        return {"succes":true,resp_insert}
-}
+  const user_Mod = new userModel(datos);
+  const res = await user_Mod.save();
+  console.log(res);
+  return { succes: true, res };
+};
 module.exports = {
-        getUser,insertUser
-}
+  getUser,
+  insertUser,
+};

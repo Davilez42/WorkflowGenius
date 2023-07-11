@@ -1,54 +1,20 @@
-const {getClientMongo} = require('./bd')
-const {ObjectId} = require('mongodb')
+const { Schema, model } = require("mongoose");
+const dashBoardModel = require("./Models/dashBoardModel");
+const { dashboardTempleteModel } = require("../helpers/templeteModesl");
+require("./Models/userModel");
 
-const getDashboardsByIdUser=async(id_user)=>{
-    const client = getClientMongo()
-    await client.connect()
-    return  client.db('webadtasker').collection('dashboards').find({"id_aut":new ObjectId(id_user)}).toArray()
-}
+require("./connection");
+const getDashboardsByIdUser = async (id_user) => {
+  const dashboards = await dashBoardModel.findById(id_user);
+  return dashboards;
+};
 
-const creatNewDashboard = async(nombre,descripcion,id_user)=>{
-    const client = await getClientMongo().connect()
-    dash = {
-            id_aut:new ObjectId(id_user),
-            nombre,
-            descripcion,
-            sesions:[
-                {
-                    _id:new ObjectId(),
-                    nombre:"Todo",
-                    tasks:[
-                        {
-                            _id:new ObjectId(),
-                            title:"Welcome !",
-                            descripcion:"First task"
-                        }
-                    ]
-                }
-                ,{
-                    _id:new ObjectId(),
-                    nombre:"In Progress",
-                    tasks:[
-                        
-                    ]
+const creatNewDashboard = async (name, description, id_aut) => {
+  const new_dash = new dashBoardModel(
+    dashboardTempleteModel(name, description, id_aut)
+  );
+  await new_dash.save();
+  return new_dash;
+};
 
-                }
-                ,{
-                    _id:new ObjectId(),
-                    nombre:"Terminate",
-                    tasks:[
-                        
-                    ]
-
-                }
-            ]
-
-    }
-    resp =  await  client.db('webadtasker').collection('dashboards').insertOne(dash)
-    dash["_id"]=resp.insertedId
-    return dash
- 
-}   
-
-
-module.exports = {getDashboardsByIdUser,creatNewDashboard}
+module.exports = { getDashboardsByIdUser, creatNewDashboard };

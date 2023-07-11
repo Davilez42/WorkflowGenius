@@ -4,8 +4,9 @@ const { dashboardTempleteModel } = require("../helpers/templeteModesl");
 require("./Models/userModel");
 
 require("./connection");
-const getDashboardsByIdUser = async (id_user) => {
-  const dashboards = await dashBoardModel.findById(id_user);
+const getDashboardsByIdUser = async (id_aut) => {
+
+  const dashboards = await dashBoardModel.find({id_aut});
   return dashboards;
 };
 

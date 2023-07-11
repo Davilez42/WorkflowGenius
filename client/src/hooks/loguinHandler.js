@@ -10,7 +10,7 @@ export default async function  LoguinHandler(username,password,handlerMessage,ha
         body: JSON.stringify({ username, password}),
       };
 
-    const respuesta =  await fetch('http://192.168.1.21:5000/api/v1/validateuser',datos)
+    const respuesta =  await fetch('http://localhost:5000/api/v1/validateuser',datos)
         if (respuesta.ok) {
             const user = await respuesta.json()
             if (user.username[0]) {

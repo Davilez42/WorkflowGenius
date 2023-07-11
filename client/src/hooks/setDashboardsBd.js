@@ -1,8 +1,8 @@
 
 export async function setDashboardDb(f,nombre,dash){
     //inserto en la base de datos
-    const user = JSON.parse(window.localStorage.getItem("LoggedUser"))
-    const respuesta  = await fetch(`http://192.168.1.7:5000/api/v1/newDashboard/user/${user.id_user}/name/${nombre}`,{
+    const user = JSON.parse(window.sessionStorage.getItem("LoggedUser"))
+    const respuesta  = await fetch(`http://192.168.1.21:5000/api/v1/newDashboard/user/${user._id}/name/${nombre}`,{
         method:"POST",
         headers:{"auth":user.token},
         mode:"cors"

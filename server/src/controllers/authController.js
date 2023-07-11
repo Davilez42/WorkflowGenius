@@ -20,6 +20,7 @@ const validateUser = async (req, res) => {
     }
     //validacion de usuario
     const response_bd = await serviceUsers.getUser(user.username);
+    
     if (!response_bd) {
       return res.status(200).json({ username: [false, user.username] });
     }
@@ -30,14 +31,14 @@ const validateUser = async (req, res) => {
       ))
     ) {
       return res.status(200).json({
-        id_user: response_bd._id,
+        _id: response_bd._id,
         username: [true, response_bd.username],
         password: false,
       });
     }
     const token = generateToken(user);
     return res.status(200).json({
-      id_user: response_bd._id,
+      _id: response_bd._id,
       username: [true, user.username],
       password: true,
       token: token,

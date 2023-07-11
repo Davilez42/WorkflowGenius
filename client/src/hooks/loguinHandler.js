@@ -19,7 +19,7 @@ export default async function  LoguinHandler(username,password,handlerMessage,ha
                     return
                 }
                 window.sessionStorage.setItem('LoggedUser',JSON.stringify(user)) ; 
-                handlerAction(user.id_user)        
+                handlerAction(user._id)        
             }
             else{
                 handlerMessage("El usuario No existe")

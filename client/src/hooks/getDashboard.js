@@ -55,7 +55,7 @@
   ];
 
     const user = JSON.parse(sessionStorage.getItem('LoggedUser'))
-    const resp = await fetch(`http://192.168.1.7:5000/api/v1/getDashboard/${user.id_user}`)
+    const resp = await fetch(`http://192.168.1.7:5000/api/v1/getDashboard/${user._id}`)
     if(resp.ok){    
       const data = await resp.json()
       f(data)

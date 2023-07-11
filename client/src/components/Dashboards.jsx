@@ -3,11 +3,6 @@ import {useNavigate} from 'react-router-dom'
 import {useContext,useState} from 'react'
 import {DashboardContext} from '../context/DashboardContext'
 
-
-
-
-
-
 export default function Dashboards(props){
         const {dashboards,crearDashboard} =   useContext(DashboardContext)
         const [nombre,setNombre] = useState('')
@@ -26,7 +21,7 @@ export default function Dashboards(props){
                   </div>
                      {dashboards.map(d => 
                         <div key={d._id}  className="card-dashboard" onClick={()=>{  navigate(`/home/main/dashboard/${d._id}`)} }> 
-                            <p>{d.nombre}</p>
+                            <p>{d.name}</p>
                         </div>)}  
             </div>
  

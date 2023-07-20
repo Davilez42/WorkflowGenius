@@ -3,8 +3,8 @@ const controller = require('../../controllers/v1')
 const validators = require('../../middlewares/paramsValidators.js/')
 const router = Router()
 
-router.post("/validate_user",validators.loginParamsValidator,controller.loginUser)
-router.post('/register_User',validators.registerParamsValidator,controller.registerUser)
+router.post("/sign_user",validators.loginParamsValidator,controller.signUser)
+router.post('/signUp_user',validators.registerParamsValidator,controller.signUpUser)
 module.exports = router
  
  

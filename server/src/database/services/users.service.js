@@ -7,26 +7,24 @@ const getUser = async (username) => {
   return user;
 };
 
-const insertUser = async (datos) => {
-  const { username, email } = datos;
+const insertUser = async (data) => {
+  const { username, email } = data;
 
-  const user = await userModel.findOne({ username });
-
-  const user_email = await userModel.findOne({ email });
+  const user = await userModel.exists({ username });
+  const user_email = await userModel.exists({ email });
 
   if (user) {
-    return { succes: false, value: "username" };
+    return { succes: false, username: false, email: true };
   }
   if (user_email) {
-    return { succes: false, value: "email" };
+    return { succes: false, email: false, username: true };
   }
-  const hashed_password = await haspassword(datos["password"]);
-  datos["password"] = hashed_password;
 
-  const user_Mod = new userModel(datos);
-  const res = await user_Mod.save();
+  data["password"] = await haspassword(data["password"]);
 
-  return { succes: true, res };
+  const user_created = await userModel.create(data);
+
+  return { succes: true, user_created, username: true, email: true };
 };
 module.exports = {
   getUser,

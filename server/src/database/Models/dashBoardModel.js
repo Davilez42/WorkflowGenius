@@ -2,7 +2,7 @@ const { Schema, model, Types } = require("mongoose");
 
 const dashboardScheme = new Schema(
   {
-    id_aut: { type: Types.ObjectId, ref: "users" },
+    id_aut: { type: Types.ObjectId, ref: "User" },
     name: { type: String, require: true },
     descripcion: { type: String, require: true },
     sesions: [
@@ -24,5 +24,5 @@ const dashboardScheme = new Schema(
   }
 );
 
-const dashBoardModel = model("Dashboard", dashboardScheme);
+const dashBoardModel = model("Dashboard", dashboardScheme, "dashboards");
 module.exports = dashBoardModel;

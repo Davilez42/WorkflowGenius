@@ -1,0 +1,17 @@
+@startuml adtasker
+
+
+Entity users {
+   _id: ObjectId()
+   username:String
+   first_names:String
+   last_names:String
+   password:String
+   state_user:boolean
+   recent_sesion:Date()
+   id_avatar:String
+   ----
+}
+
+
+@end

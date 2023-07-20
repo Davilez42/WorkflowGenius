@@ -1,20 +1,27 @@
-const express = require("express")
-const cors = require("cors")
-require('colors')
+const express = require("express");
+const cors = require("cors");
 
-const routesv1 = require('./src/v1/routes/index')
-const routeNotFoundHandler = require('./src/controllers/routeNotFoundHandler')
-const logger = require('./src/middlewares/logger')
-const config = require('./src/configs/config')
-const app =  express()
+require("colors"); //* DEV
 
-app.use(logger)
+const routesv1 = require("./src/routes/v1");
+const routeNotFoundHandler = require("./src/middlewares/routeNotFoundHandler");
+const logger = require("./src/middlewares/logger");
+const config = require("./src/configs/config");
+const app = express();
+
+app.use(logger);
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }) );
+app.use(express.urlencoded({ extended: true }));
 
-//RUTAS 
+// CORS
 app.use(cors(config.CONFIG_CORS));
-app.get('/',(req,res)=>{return res.json({"message":"Welcome To Server !"})})
-app.use('/api/v1',routesv1)
-app.use(routeNotFoundHandler)
-module.exports = app
+
+// ROUTES
+app.get("/", (req, res) => {
+  return res.json({ message: " Welcome To 📕 WorkflowGenius Server !" });
+});
+
+app.use("/api/v1", routesv1);
+
+app.use(routeNotFoundHandler);
+module.exports = app;

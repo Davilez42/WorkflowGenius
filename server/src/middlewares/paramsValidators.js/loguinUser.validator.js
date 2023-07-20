@@ -1,4 +1,4 @@
-const handlerError =  require('../../controllers/v1/handlerError')
+const handlerError = require("../../controllers/v1/handlerError");
 const loginParamsValidator = (req, res, next) => {
   try {
     const { username, password } = req.body;
@@ -12,11 +12,11 @@ const loginParamsValidator = (req, res, next) => {
       throw new handlerError(422, "Values empty");
     }
     if (username.split(" ").length > 1 || password.split(" ").length > 1) {
-      throw new handlerError(422, "Error: formato incorrecto");
+      throw new handlerError(422, "Error: format invalid");
     }
     next();
   } catch (e) {
     res.status(e.status).json({ messageError: e.message });
   }
 };
-module.exports =  loginParamsValidator
+module.exports = loginParamsValidator;

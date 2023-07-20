@@ -1,27 +1,24 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-const validateToken = (req, res, next) => {
-    try {
-      const token = req.query.t_ken || req.headers["auth"];
-      if (!token) {
-        res.status(200).json({"message":"Acceso Denegado,No se meta donde no debe deje de joder mka🤣"})
-        return;
-      }
-
-      jwt.verify(token, process.env.KEY_SECRET, (err, user) => {
-        if (err) {
-          res.status(200).json({"message":"Tu sesion ha caducado.. inicia sesion nuevamente 🤣"})
-          return
-        } 
-        next();
-      
-      });
-    } catch (error) {
-        res.status(500).json({"message":error.message})
+const validateToken = async (req, res, next) => {
+  try {
+    const { token } = req.cookies;
+    if (!token) {
+      return res.status(500).json({ message: "Token not found" });
     }
+    await jwt.verify(token, process.env.KEY_SECRET);
+
+    const data = await jwt.decode(token);
+
+    req.id_user = data._id;
+
+    next();
+  } catch (error) {
+    res.status(511).json({ message: "auth token corrupted" });
+  }
 };
 
 module.exports = {
-  validateToken
+  validateToken,
 };

@@ -1,13 +1,13 @@
 // USER CONTROLLERS
-const loginUser =  require('./auth/loginController')
-const registerUser =  require('./auth/register.controller')
+const signUser =  require('./auth/sign.Controller')
+const signUpUser =  require('./auth/signUp.controller')
 // DASHBOARD CONTROLLER
 const createDashboard  = require('./dashboard/createDashboard.controller')
 const getDashboards  = require('./dashboard/getDashboard.controller')
 
 module.exports = {
-    loginUser,
-    registerUser,
+    signUser,
+    signUpUser,
     createDashboard,
     getDashboards
 }

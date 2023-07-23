@@ -5,8 +5,14 @@ mongoose
   .connect(config.URI_DB)
   .then(() => {
     console.log("✔️  WorkflowGenius: connection established");
-    mongoose.connection.on("open", (_) =>
-      console.log("🌫️ WorkflowGenius: open connection")
+
+    mongoose.connection.on("disconnected", (_) => {
+      console.log("🔌 WorkflowGenius: DB disconnect ❗");
+      console.log("⏳  WorkflowGenius: DB connecting ⏱️");
+    });
+
+    mongoose.connection.on("reconnected", (_) =>
+      console.log("✔️  WorkflowGenius: DB reconnected ❕")
     );
     mongoose.connection.on("error", (err) =>
       console.log(

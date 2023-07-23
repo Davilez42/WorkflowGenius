@@ -1,0 +1,80 @@
+.container-sesion {
+    border-radius: 4px;
+    background-color: #0d1117;
+
+    width: 360px;
+    height: min-content;
+    max-height: 600px;
+}
+
+.cabecera_sesion p {
+    margin: 0;
+    font-size: 24px;
+    padding-left: 25px;
+}
+
+.cabecera_sesion {
+    background-color: #1da61b;
+}
+
+.container-card-tasks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 15px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.titulo {
+    font-size: 18px;
+    font-weight: 600;
+}
+.card-task {
+    cursor: pointer;
+    height: 50px;
+    width: 80%;
+    margin: 0 auto;
+    cursor: pointer;
+    padding-left: 20px;
+    background-color: #262d38;
+    border-radius: 5px;
+}
+
+.options-tasks {
+    margin-top: 20px;
+    height: 60px;
+    background-color: #2b2828;
+}
+
+.icon-add {
+    float: right;
+    margin-top: 5px;
+}
+
+.options-tasks input {
+    float: left;
+    width: 60%;
+    margin-top: 10px;
+    background-color: #474848;
+    border: none;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 50px;
+    margin-left: 15px;
+    transition: .5s all;
+}
+
+.options-tasks input:hover {
+    background-color: #3f3f3f;
+}
+
+.options-tasks input:focus {
+    outline: none;
+}
+
+.options-tasks p {
+    margin: 0;
+}

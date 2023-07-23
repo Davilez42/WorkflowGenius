@@ -1,0 +1,14 @@
+.navBarDashboard{
+    background-color:#141d25;
+}
+.navBarDashboard{
+    width: 300px;
+    background-color:#141d25;
+}
+.navBarDashboard ul li{
+    list-style: none;
+}
+.avatar{
+    width: 40%;
+    border-radius: 100px;
+}

@@ -1,13 +1,13 @@
 
 import {useNavigate} from 'react-router-dom'
 import {useContext,useState} from 'react'
-import {DashboardContext} from '../context/DashboardContext'
-
+import {DashboardContext} from '../../context/DashboardContext'
+import './dashboards.css'
 export default function Dashboards(props){
         const {dashboards,crearDashboard} =   useContext(DashboardContext)
         const [nombre,setNombre] = useState('')
         const navigate = useNavigate()
-
+        
     return  <div className="container-dashboards">
                   <p className='title-dashboard'>Dashboards Actuales</p>
                   <div className='form_dashboard'>

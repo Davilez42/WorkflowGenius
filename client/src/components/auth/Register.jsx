@@ -1,5 +1,6 @@
 import { NavLink} from 'react-router-dom'
 import React from 'react'
+import './forms.css'
 export default function Register(){   
     return      <>
                 <div className='container_form'>

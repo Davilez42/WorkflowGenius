@@ -1,48 +1,44 @@
-
-import {createContext,useEffect,useState} from 'react'
-import {getDashboards} from '../hooks/getDashboard'
-import {setDashboardDb}  from '../hooks/setDashboardsBd';
+import { createContext, useEffect, useState } from "react";
+import { getDashboards } from "../services/getDashboard";
+import { createDashboard } from "../services/createDashboard";
 export const DashboardContext = createContext();
- 
-export  function DashboardContextProvider (props){
 
-    const [dashboards,setDashboards] = useState([])
-    
-    useEffect(()=>{
-        getDashboards(setDashboards)
-    },[])
+export function DashboardContextProvider(props) {
+  const [dashboards, setDashboards] = useState([]);
 
-    const crearDashboard=(name)=>{
-        setDashboardDb(setDashboards,name,dashboards)       
-    }
+  useEffect(() => {
+    getDashboards(setDashboards);
+  }, []);
 
-    const crearTarea=(name,id_dashboard,id_sesion,f)=>{
+  const crearDashboard = (name) => {
+    createDashboard(setDashboards, name, dashboards);
+  };
 
-             dashboards.forEach(d=>{
-            if (d._id===id_dashboard){
-                d.sesions.forEach(s=>{
-                    if(s._id===id_sesion){
-                           s.tasks.push({"title":name})
-                           f([...s.tasks]) 
-                           //TODO
-                           
-                    }
-                })
-            }
-        })
+  const createTask = (name, id_dashboard, id_sesion, f) => {
+    dashboards.forEach((d) => {
+      if (d._id === id_dashboard) {
+        d.sesions.forEach((s) => {
+          if (s._id === id_sesion) {
+            s.tasks.push({ title: name });
+            f([...s.tasks]);
+            //TODO
+          }
+        });
+      }
+    });
+  };
 
-    }
-
-   return  <>
-            <DashboardContext.Provider value={
-                {
-                    dashboards,
-                    crearDashboard,
-                    crearTarea               
-                }}>
-            {
-                props.children
-            }
-            </DashboardContext.Provider>
-            </>
+  return (
+    <>
+      <DashboardContext.Provider
+        value={{
+          dashboards,
+          crearDashboard,
+          createTask,
+        }}
+      >
+        {props.children}
+      </DashboardContext.Provider>
+    </>
+  );
 }

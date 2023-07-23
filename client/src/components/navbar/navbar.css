@@ -1,0 +1,43 @@
+header ul {
+
+    display: flex;
+    float: left;
+    gap: 2rem;
+
+}
+
+header {
+    background-color: #4f5a6b;
+    display: flex;
+
+}
+
+header ul li {
+    list-style: none;
+    float: left;
+    text-decoration: none;
+
+}
+
+header ul li a {
+    color: white;
+}
+
+header ul {
+
+    display: flex;
+    float: left;
+    gap: 2rem;
+
+}
+
+header ul li {
+    list-style: none;
+    float: left;
+    text-decoration: none;
+
+}
+
+header ul li a {
+    color: white;
+}

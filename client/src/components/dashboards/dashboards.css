@@ -1,0 +1,34 @@
+.container-dashboards{   
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    gap:1rem;
+    height: min-content;
+    width: 100%;
+}
+.title-dashboard{
+    font-size: 30px;
+    
+}
+.form_dashboard{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    height: min-content;
+}
+.form_dashboard input{
+    border-radius: 1px;
+    background-color: #48494a;
+    border: none;
+    height: 40px;
+
+}
+.card-dashboard{
+    text-align: center;
+    height: 100px;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 1px;
+    background-color: rgb(101, 100, 100);
+
+}

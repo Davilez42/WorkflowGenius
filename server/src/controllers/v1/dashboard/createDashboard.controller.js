@@ -1,10 +1,9 @@
 const serviceDashboards = require("../../../database/services/dashboards.service");
 const createDashboard = async (req, res) => {
+  const { id_user } = req;
+  const { name, description } = req.body;
   try {
-    const { id_user } = req;
-    const { name, description } = req.body;
-
-    const dashb_new = await serviceDashboards.creatNewDashboard(
+    const dash_new = await serviceDashboards.creatNewDashboard(
       name,
       description,
       id_user
@@ -13,7 +12,7 @@ const createDashboard = async (req, res) => {
     return res.status(200).json({
       succes: true,
       data: {
-        dashb_new,
+        dash_new,
       },
     });
   } catch (e) {

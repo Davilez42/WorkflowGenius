@@ -1,7 +1,8 @@
 const handlerError = require("../../controllers/v1/handlerError");
 const loginParamsValidator = (req, res, next) => {
+  //? middleware para validar parametros al inicar sesion
+  const { username, password } = req.body;
   try {
-    const { username, password } = req.body;
     if (!username || !password) {
       throw new handlerError(
         400,

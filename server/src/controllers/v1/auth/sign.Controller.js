@@ -22,13 +22,13 @@ const loginUser = async (req, res) => {
     const token = generateToken({ _id: user_db.id });
 
     res.cookie("token", token, {
-      maxAge: 7000 * 60,
       httpOnly: true,
     });
 
     return res.status(200).json({
       succes: true,
       data: {
+        id_user: user_db._id,
         username: user_db.username,
         id_avatar: user_db.id_avatar,
         first_name: user_db.first_name,

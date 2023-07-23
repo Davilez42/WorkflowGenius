@@ -1,40 +1,48 @@
-function dashboardTempleteModel(name,description,id_aut){return  {
-        name,
-        description,
-        id_aut,
-        sesions:[
-            {
-                name:"todo",
-                tasks:[
-                    {
+const { ObjectId } = require("mongodb");
 
-                        title:"Welcome to ad tasker",
-                        description:"welcome!!!"
-                    }
-                ]
-            },
-            {
-                name:"inprogress",
-                tasks:[
-                    {
-
-                        title:"tasks in progress...",
-                        description:"progress"
-                    }
-                ]
-            },{
-                name:"terminate",
-                tasks:[
-                    {
-
-                        title:"tasks terminated...",
-                        description:"terminated"
-                    }
-                ]
-            }
-        ]
-}}
+function dashboardTempleteModel(name, description, id_aut) {
+  return {
+    name,
+    description,
+    id_aut,
+    sesions: [
+      {
+        _id: new ObjectId(),
+        name: "todo",
+        tasks: [
+          {
+            _id: new ObjectId(),
+            title: "Welcome to ad tasker",
+            description: "welcome!!!",
+          },
+        ],
+      },
+      {
+        _id: new ObjectId(),
+        name: "inprogress",
+        tasks: [
+          {
+            _id: new ObjectId(),
+            title: "tasks in progress...",
+            description: "progress",
+          },
+        ],
+      },
+      {
+        _id: new ObjectId(),
+        name: "terminate",
+        tasks: [
+          {
+            _id: new ObjectId(),
+            title: "tasks terminated...",
+            description: "terminated",
+          },
+        ],
+      },
+    ],
+  };
+}
 
 module.exports = {
-    dashboardTempleteModel
-}
+  dashboardTempleteModel,
+};

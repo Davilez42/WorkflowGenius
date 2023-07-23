@@ -1,7 +1,8 @@
 const handlerError = require("../../controllers/v1/handlerError");
 const createDashParamValidator = (req, res, next) => {
+  //? middleware para validar parametros al crear un dashboard
+  const { name, description } = req.body;
   try {
-    const { name, description } = req.body;
     if (!name || !description) {
       throw new handlerError(
         400,
@@ -13,6 +14,7 @@ const createDashParamValidator = (req, res, next) => {
     }
     next();
   } catch (e) {
+    console.log(e);
     res.status(e.status || 500).json({ messageError: e.message });
   }
 };

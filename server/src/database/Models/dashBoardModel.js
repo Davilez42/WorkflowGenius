@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const { Schema, model, Types } = require("mongoose");
 
 const dashboardScheme = new Schema(
@@ -7,7 +8,7 @@ const dashboardScheme = new Schema(
     descripcion: { type: String, require: true },
     sesions: [
       {
-        _id: { type: Types.ObjectId },
+        _id: { type: Types.ObjectId},
         name: { type: String, require: true },
         tasks: [
           {

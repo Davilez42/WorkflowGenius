@@ -1,5 +1,6 @@
 const handlerError = require("../../controllers/v1/handlerError");
 const registerParamsValidator = (req, res, next) => {
+  //? middleware para validar parametros del endpoint refistro
   try {
     const { username, password, email, first_names, last_names } = req.body;
 

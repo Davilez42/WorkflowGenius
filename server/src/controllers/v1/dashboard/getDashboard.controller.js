@@ -5,7 +5,6 @@ const getDashboards = async (req, res) => {
     const dashboards_user = await serviceDashboards.getDashboardsByIdUser(
       id_user
     );
-    console.log(dashboards_user);
     return res.status(200).json({ succes: true, data: { dashboards_user } });
   } catch (e) {
     console.log(e);

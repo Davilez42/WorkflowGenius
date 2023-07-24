@@ -3,17 +3,14 @@
 .container-sesion {
     border-radius: 4px;
     background-color: #ebebebaf;
-    width: 360px;
     height: min-content;
-    max-height: 600px;
+    width: 350px;
+    min-width: 320px;
+    max-height: 500px;
     backdrop-filter: blur(50px);
-
 }
 
 .cabecera_sesion p {
-
-
-
     margin: 0;
     color: rgb(83, 77, 77);
     font-family: 'Lato', sans-serif;
@@ -32,9 +29,8 @@
     gap: 20px;
     width: 100%;
     margin: 0 auto;
-
     margin-top: 15px;
-    max-height: 500px;
+    max-height: 380px;
     overflow-y: scroll;
 }
 

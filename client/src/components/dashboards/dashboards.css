@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     gap: 1rem;
     height: min-content;
-    width: 100%;
+    width: 90%;
 
 
 }
@@ -17,16 +17,28 @@
 .form_dashboard {
     width: 100%;
     display: flex;
+    align-items: center;
     gap: 10px;
     height: min-content;
 }
 
 .form_dashboard input {
     border-radius: 1px;
-    background-color: #4b4b4b63;
+    background-color: rgba(0, 0, 0, 0.158);
+    backdrop-filter: blur(10px);
     border: none;
-    height: 40px;
+    height: 45px;
+}
 
+.button_add_dash {
+    height: 45px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s;
+}
+
+.button_add_dash:hover {
+    background-color: rgba(255, 255, 255, 0.267);
 }
 
 .card-dashboard {
@@ -36,5 +48,6 @@
     cursor: pointer;
     font-weight: 600;
     border-radius: 1px;
-    background-color: rgba(29, 29, 29, 0.774);
+    backdrop-filter: blur(10px);
+    background-color: rgba(29, 29, 29, 0.747);
 }

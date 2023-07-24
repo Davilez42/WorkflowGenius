@@ -10,6 +10,7 @@ import Main from "./components/Main";
 import Dashboards from "./components/dashboards/Dashboards";
 import ContentDashboard from "./components/contentDashboard/ContentDashboard";
 
+
 const routes = createBrowserRouter([
   {
     path: "/",

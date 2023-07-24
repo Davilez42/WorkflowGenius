@@ -1,9 +1,18 @@
+.content-Dashboard {
+    width: 90%;
+    overflow-x: hidden;
+}
+
+
 .container-tasks {
     display: flex;
-    padding-top: 60px;
     width: 100%;
     gap: 1rem;
-    overflow: scroll;
+    overflow-x: auto;
     backdrop-filter: blur(25px);
+}
 
+.Title {
+    font-size: 45px;
+    font-weight: 600;
 }

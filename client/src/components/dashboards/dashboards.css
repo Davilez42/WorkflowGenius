@@ -1,34 +1,40 @@
-.container-dashboards{   
+.container-dashboards {
     display: flex;
     text-align: center;
     flex-wrap: wrap;
-    gap:1rem;
+    gap: 1rem;
     height: min-content;
     width: 100%;
+
+
 }
-.title-dashboard{
+
+.title-dashboard {
     font-size: 30px;
-    
+    font-weight: 600;
 }
-.form_dashboard{
+
+.form_dashboard {
     width: 100%;
     display: flex;
     gap: 10px;
     height: min-content;
 }
-.form_dashboard input{
+
+.form_dashboard input {
     border-radius: 1px;
-    background-color: #48494a;
+    background-color: #4b4b4b63;
     border: none;
     height: 40px;
 
 }
-.card-dashboard{
-    text-align: center;
-    height: 100px;
-    width: 200px;
-    cursor: pointer;
-    border-radius: 1px;
-    background-color: rgb(101, 100, 100);
 
+.card-dashboard {
+    text-align: center;
+    height: 120px;
+    width: 300px;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 1px;
+    background-color: rgba(29, 29, 29, 0.774);
 }

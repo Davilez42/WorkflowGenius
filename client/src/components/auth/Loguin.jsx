@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import './forms.css'
-import LoguinHandler from "../../hooks/loguinHandler";
+import "./forms.css";
+import LoguinHandler from "../../services/loguinHandler";
 export default function Loguin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

@@ -8,7 +8,7 @@ import Register from "./components/auth/Register";
 import Perfil from "./Pages/perfil";
 import Main from "./components/Main";
 import Dashboards from "./components/dashboards/Dashboards";
-import Tasks from "./components/contentDashboard/ContentDashboard";
+import ContentDashboard from "./components/contentDashboard/ContentDashboard";
 
 const routes = createBrowserRouter([
   {
@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
           {
             path: "dashboard/:id_dashboard",
             props: true,
-            element: <Tasks />,
+            element: <ContentDashboard />,
           },
         ],
       },

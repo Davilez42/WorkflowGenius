@@ -4,7 +4,6 @@ import './navbarleft.css'
 export default function NavbarDashboard(){
     const navigate = useNavigate()
     const user = JSON.parse(sessionStorage.getItem('loggedUser'))
-    console.log(user);
     return <div className='navBarDashboard'>
         <nav>          
             <ul>

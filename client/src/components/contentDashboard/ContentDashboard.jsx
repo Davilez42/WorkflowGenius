@@ -6,8 +6,11 @@ import './contentDashboard.css'
 export default function ContentDashboard() {
   let params = useParams();
   const { dashboards } = useContext(DashboardContext);
+
   let dashboard = dashboards.filter((d) => d._id === params.id_dashboard);
+  
   let sesions = [];
+
   if (dashboard.length !== 0) {
     sesions = dashboard[0].sesions;
   }
@@ -19,7 +22,7 @@ export default function ContentDashboard() {
           key={s._id}
           id_sesion={s._id}
           tasks={s.tasks}
-          title={s.nombre}
+          title={s.name}
         />
       ))}
     </div>

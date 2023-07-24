@@ -1,6 +1,6 @@
 export async function createDashboard(setDashboards, name, dash) {
   //inserto en la base de datos
-  const respuesta = await fetch(
+  const response = await fetch(
     `http://localhost:5000/api/v1/dashboard/create_dashboard`,
     {
       method: "PUT",
@@ -11,8 +11,8 @@ export async function createDashboard(setDashboards, name, dash) {
     }
   );
 
-  if (respuesta.ok) {
-    const resp = await respuesta.json();
+  if (response.ok) {
+    const resp = await response.json();
     setDashboards([...dash, resp.data.dash_new]);
   } else {
     alert(

@@ -1,40 +1,34 @@
 import { createContext, useEffect, useState } from "react";
 import { getDashboards } from "../services/getDashboard";
-import { createDashboard } from "../services/createDashboard";
+import { socket } from "../socket";
 export const DashboardContext = createContext();
 
-export function DashboardContextProvider(props) {
-  const [dashboards, setDashboards] = useState([]);
 
+export function DashboardContextProvider(props) {
+
+  const [dashboards, setDashboards] = useState([]);
+  
   useEffect(() => {
     getDashboards(setDashboards);
   }, []);
 
-  const crearDashboard = (name) => {
-    createDashboard(setDashboards, name, dashboards);
-  };
+  socket.on("connect", () => {
+    console.log("client Connect socket");
+  });
 
-  const createTask = (name, id_dashboard, id_sesion, f) => {
-    dashboards.forEach((d) => {
-      if (d._id === id_dashboard) {
-        d.sesions.forEach((s) => {
-          if (s._id === id_sesion) {
-            s.tasks.push({ title: name });
-            f([...s.tasks]);
-            //TODO
-          }
-        });
-      }
-    });
-  };
+  socket.on("server-error", (data) => {
+    alert(data.messageError);
+  });
+
+
 
   return (
     <>
       <DashboardContext.Provider
         value={{
           dashboards,
-          crearDashboard,
-          createTask,
+          socket,
+          setDashboards,
         }}
       >
         {props.children}

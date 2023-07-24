@@ -1,20 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
 .container-sesion {
     border-radius: 4px;
-    background-color: #0d1117;
-
+    background-color: #ebebebaf;
     width: 360px;
     height: min-content;
     max-height: 600px;
+    backdrop-filter: blur(50px);
+
 }
 
 .cabecera_sesion p {
+
+
+
     margin: 0;
-    font-size: 24px;
+    color: rgb(83, 77, 77);
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
     padding-left: 25px;
 }
 
 .cabecera_sesion {
-    background-color: #1da61b;
+    background-color: #ffffff;
 }
 
 .container-card-tasks {
@@ -23,42 +32,58 @@
     gap: 20px;
     width: 100%;
     margin: 0 auto;
+
     margin-top: 15px;
     max-height: 500px;
     overflow-y: scroll;
 }
 
-.titulo {
-    font-size: 18px;
+.titulo_task {
+    width: 100%;
+    color: #3f3f3f;
+    font-size: 13px;
     font-weight: 600;
 }
-.card-task {
+
+.delete-icon {
     cursor: pointer;
+    float: right;
+}
+
+.card-task {
+    display: flex;
+    align-items: center;
     height: 50px;
     width: 80%;
     margin: 0 auto;
     cursor: pointer;
     padding-left: 20px;
-    background-color: #262d38;
+    background-color: #ffffff;
     border-radius: 5px;
 }
 
 .options-tasks {
     margin-top: 20px;
     height: 60px;
-    background-color: #2b2828;
+    background-color: rgba(243, 243, 243, 0);
 }
 
 .icon-add {
     float: right;
+
     margin-top: 5px;
+}
+
+.icon {
+    fill: rgb(0, 0, 0);
 }
 
 .options-tasks input {
     float: left;
     width: 60%;
     margin-top: 10px;
-    background-color: #474848;
+    color: #222222;
+    background-color: #cecece;
     border: none;
     height: 30px;
     padding-left: 10px;
@@ -68,11 +93,22 @@
 }
 
 .options-tasks input:hover {
-    background-color: #3f3f3f;
+    color: #cecece;
+    background-color: #4d4d4d;
+}
+
+.options-tasks input::after {
+    color: #222222;
+}
+
+.options-tasks input::placeholder {
+    color: #222222;
 }
 
 .options-tasks input:focus {
     outline: none;
+    background-color: #222222;
+    color: #cecece;
 }
 
 .options-tasks p {

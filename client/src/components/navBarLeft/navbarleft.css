@@ -1,14 +1,23 @@
-.navBarDashboard{
-    background-color:#141d25;
-}
-.navBarDashboard{
+.navBarDashboard {
     width: 300px;
-    background-color:#141d25;
+    display: flex;
+    gap: 30px;
+    background-color: #4d4b4b15;
+    backdrop-filter: blur(50px);
+
 }
-.navBarDashboard ul li{
+
+
+.navBarDashboard ul li {
     list-style: none;
 }
-.avatar{
+
+.navBarDashboard ul li a {
+    font-weight: 600;
+    color: rgb(233, 233, 233);
+}
+
+.avatar {
     width: 40%;
     border-radius: 100px;
 }

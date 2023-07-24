@@ -8,11 +8,11 @@ const registerParamsValidator = (req, res, next) => {
       throw new handlerError(400, "Keys invalid");
     }
     if (
-      username == "" ||
-      password == "" ||
-      first_names == "" ||
-      last_names == "" ||
-      email == ""
+      username.trim() == "" ||
+      password.trim() == "" ||
+      first_names.trim() == "" ||
+      last_names.trim() == "" ||
+      email.trim() == ""
     ) {
       throw new handlerError(422, "values empty");
     }
@@ -23,7 +23,7 @@ const registerParamsValidator = (req, res, next) => {
     ) {
       throw new handlerError(422, "format invalid");
     }
-    next()
+    next();
   } catch (e) {
     console.log(e);
     return res.status(e.status).json({ errorMessage: e.message });

@@ -4,8 +4,10 @@ const generateToken = require("../../../tools/generateToken.tool");
 const {
   passwordIncorrect,
   userNotExist,
-} = require("../../../procedures/responseServer/user.procedure");
+} = require("../../../procedures/responseServer/auth.procedure");
+
 const loginUser = async (req, res) => {
+  //?  controller for loguin users
   try {
     const { username, password } = req.body;
 

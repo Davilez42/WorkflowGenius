@@ -4,8 +4,10 @@ const generateToken = require("../../../tools/generateToken.tool");
 const {
   emailAlreadyExist,
   userNameAlreadyExist,
-} = require("../../../procedures/responseServer/user.procedure");
+} = require("../../../procedures/responseServer/auth.procedure");
+
 const registerUser = async (req, res) => {
+  //?  controller for register users
   try {
     const { succes, email, username, user_created } =
       await serviceUsers.insertUser(req.body);

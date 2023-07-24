@@ -15,12 +15,13 @@ const socketMain = (server) => {
       //? CREAR UNA TAREA
       const { id_dashboard, id_sesion, title } = body.data;
       try {
+        
         const task_created = await servicesDashboard.setTaskinDashboard(
           id_dashboard,
           id_sesion,
           title
         );
-        console.log(task_created);
+
         client.emit("task-created", { data: task_created });
         console.log(`👤 a user CREATE a Task ID: ${client.id}`);
       } catch (e) {

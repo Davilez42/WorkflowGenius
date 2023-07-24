@@ -29,15 +29,8 @@ const setTaskinDashboard = async (id_dashboard, id_sesion, title) => {
       s.tasks.push({ _id, title });
     }
   });
-
-  return await dash_db
-    .save()
-    .then((d) => {
-      return { _id, title };
-    })
-    .catch((err) => {
-      return err;
-    });
+  await dash_db.save();
+  return { _id, title };
 };
 
 const deleteTaskDashboard = async (id_dashboard, id_sesion, id_task) => {
@@ -48,7 +41,8 @@ const deleteTaskDashboard = async (id_dashboard, id_sesion, id_task) => {
       s.tasks = s.tasks.filter((t) => t._id.toString() !== id_task);
     }
   });
-  return dash_db.save();
+  const resp = await dash_db.save();
+  return resp;
 };
 
 module.exports = {

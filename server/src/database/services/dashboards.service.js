@@ -11,9 +11,9 @@ const getDashboardsByIdUser = async (id_aut) => {
   return await dashBoardModel.find({ id_aut });
 };
 
-const creatNewDashboard = async (name, description, id_aut) => {
+const creatNewDashboard = async (dashboard) => {
   const new_dash = new dashBoardModel(
-    dashboardTempleteModel(name, description, id_aut)
+    dashboardTempleteModel(dashboard)
   );
   return await new_dash.save();
 };

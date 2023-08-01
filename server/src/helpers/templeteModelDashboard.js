@@ -1,10 +1,8 @@
 const { ObjectId } = require("mongodb");
 
-function dashboardTempleteModel(name, description, id_aut) {
+function dashboardTempleteModel(dashboard) {
   return {
-    name,
-    description,
-    id_aut,
+    ...dashboard,
     sesions: [
       {
         _id: new ObjectId(),

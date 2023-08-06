@@ -1,9 +1,9 @@
-const Router = require('express')
-const controllers = require('../../controllers/v1')
-const validators = require('../../middlewares/paramsValidators.js/')
-const {validateToken} = require('../../middlewares/valdiateToken')
-const router = Router()
+module.exports = (route, controllers, validators, validateToken) => {
 
-router.get('/get_dashboard', validateToken,controllers.getDashboards)
-router.put('/create_dashboard',validateToken,validators.createDashParamValidator,controllers.createDashboard)
-module.exports = router;
+    route.get('/get_dashboard', validateToken, controllers.getDashboards)
+    route.put('/create_dashboard', validateToken, validators.createDashParamValidator, controllers.createDashboard)
+    route.delete('/delete_dashboard/:id_dashboard', validateToken, controllers.deleteDashboard)
+
+    return route
+}
+

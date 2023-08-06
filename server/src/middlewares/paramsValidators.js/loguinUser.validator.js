@@ -17,7 +17,7 @@ const loginParamsValidator = (req, res, next) => {
     }
     next();
   } catch (e) {
-    res.status(e.status).json({ messageError: e.message });
+    res.status(e.status || 500).json({ messageError: e.message });
   }
 };
 module.exports = loginParamsValidator;

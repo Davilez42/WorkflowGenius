@@ -26,7 +26,7 @@ const registerParamsValidator = (req, res, next) => {
     next();
   } catch (e) {
     console.log(e);
-    return res.status(e.status).json({ errorMessage: e.message });
+    return res.status(e.status || 500).json({ errorMessage: e.message });
   }
 };
 

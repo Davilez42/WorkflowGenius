@@ -1,11 +1,19 @@
-const express = require('express')
-const authRoutes = require('./auth.routes')
-const dashBoardRoutes = require('./dashboard.routes')
-const router =  express.Router()
+const Router = require('express')
+const controllers = require('../../controllers/v1/index')
+const validators = require('../../middlewares/paramsValidators.js')
+const { validateToken } = require('../../middlewares/valdiateToken')
 
-router.get('/',(req,res)=>{return res.json({"message":"Welcome To 📕 WorkflowGenius  routes v1 !"})})
+//decorators 
+const authDecorator = require('./auth.routes')
+const dashboardDecorator = require('./dashboard.routes')
 
-router.use('/user',authRoutes)
-router.use('/dashboard',dashBoardRoutes)
+//routes
+const auth = Router()
+const dashboard = Router()
 
-module.exports = router
+const appRoutesV1 = Router()
+appRoutesV1.get('/', (req, res) => { return res.json({ "message": "Welcome To 📕 WorkflowGenius  routes v1 !" }) })
+appRoutesV1.use('/user', authDecorator(auth, controllers, validators))
+appRoutesV1.use('/dashboard', dashboardDecorator(dashboard, controllers, validators, validateToken))
+
+module.exports = appRoutesV1

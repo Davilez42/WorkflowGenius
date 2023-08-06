@@ -3,7 +3,6 @@ require("dotenv").config();
 
 const validateToken = async (req, res, next) => {
   const { token } = req.cookies;
-
   try {
     if (!token) {
       return res.status(500).json({ message: "Token not found" });

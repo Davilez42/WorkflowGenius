@@ -2,12 +2,12 @@ const express = require("express");
 const cors = require("cors");
 
 require("colors"); //* DEV
-const routesv1 = require("./routes/v1");
 const routeNotFoundHandler = require("./middlewares/routeNotFoundHandler");
 const logger = require("./middlewares/logger");
 const cookieParser = require("cookie-parser");
-const config = require("../configs/config");
 const mainSocket = require('./sockets/mainSocket')
+const config = require("../configs/config");
+const routesv1 = require("./routes/v1");
 const app = express();
 
 //CONFIGURACION SOCKETS

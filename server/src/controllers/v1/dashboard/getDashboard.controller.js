@@ -1,10 +1,9 @@
-const serviceDashboards = require("../../../database/services/dashboards.service");
-const getDashboards = async (req, res) => {
+
+const getDashboards = ({ dashboardService }) => async (req, res) => {
   const { id_user } = req;
   try {
-    const dashboards_user = await serviceDashboards.getDashboardsByIdUser(
-      id_user
-    );
+    const dashboards_user = await dashboardService.getDashboardsByIdUser(id_user);
+
     return res.status(200).json({ succes: true, data: { dashboards_user } });
   } catch (e) {
     console.log(e);

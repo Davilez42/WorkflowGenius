@@ -1,5 +1,6 @@
 const { Server } = require("socket.io");
-const servicesDashboard = require("../database/services/dashboards.service");
+const { dashboardService } = require("../database/services/");
+
 const socketMain = (server) => {
   const io = new Server(server); // inicia el socket con el servidor
   //? Eventps sockets
@@ -15,8 +16,7 @@ const socketMain = (server) => {
       //? CREAR UNA TAREA
       const { id_dashboard, id_sesion, title } = body.data;
       try {
-        
-        const task_created = await servicesDashboard.setTaskinDashboard(
+        const task_created = await dashboardService.setTaskinDashboard(
           id_dashboard,
           id_sesion,
           title
@@ -33,7 +33,7 @@ const socketMain = (server) => {
     client.on("delete-task", async (body) => {
       const { id_dashboard, id_sesion, id_task } = body.data;
       try {
-        await servicesDashboard.deleteTaskDashboard(
+        await dashboardService.deleteTaskDashboard(
           id_dashboard,
           id_sesion,
           id_task

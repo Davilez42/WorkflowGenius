@@ -22,24 +22,8 @@
     height: min-content;
 }
 
-.form_dashboard input {
-    border-radius: 1px;
-    background-color: rgba(0, 0, 0, 0.158);
-    backdrop-filter: blur(10px);
-    border: none;
-    height: 45px;
-}
 
-.button_add_dash {
-    height: 45px;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: all 0.2s;
-}
 
-.button_add_dash:hover {
-    background-color: rgba(255, 255, 255, 0.267);
-}
 
 .card-dashboard {
     text-align: center;

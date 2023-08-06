@@ -22,7 +22,7 @@ export default function NavbarDashboard() {
               to="/home/main/dashboards"
               style={{ textDecoration: "none" }}
             >
-              ayuda
+              Mensajes
             </NavLink>
           </li>
           <li>

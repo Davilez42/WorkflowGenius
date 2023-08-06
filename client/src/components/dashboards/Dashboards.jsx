@@ -4,12 +4,12 @@ import { createDashboardService } from "../../services/createDashboard.service";
 import { deleteDashboardService } from "../../services/deleteDashboard.service";
 import { DashboardContext } from "../../context/DashboardContext";
 import "./dashboards.css";
-import { IoIosAdd, IoIosClose } from "react-icons/io";
+import { InputAdd } from "../inputAdd/InputAdd";
+import { IoIosClose } from "react-icons/io";
 
 export default function Dashboards() {
   const { dashboards, setDashboards } = useContext(DashboardContext);
 
-  const [nombre, setNombre] = useState("");
   const navigate = useNavigate();
 
   const createDashboard = (name) => {
@@ -24,21 +24,7 @@ export default function Dashboards() {
     <div className="container-dashboards">
       <p className="title-dashboard">Dashboards Actuales</p>
       <div className="form_dashboard">
-        <input
-          onChange={(event) => setNombre(event.target.value)}
-          type="text"
-          placeholder="nombre Dashboard"
-          value={nombre}
-        />
-
-        <IoIosAdd
-          size="35px"
-          className="button_add_dash"
-          onClick={() => {
-            createDashboard(nombre);
-            setNombre("");
-          }}
-        />
+        <InputAdd valueDefault="agregar dashboard" action={createDashboard} />
       </div>
 
       {dashboards.map((d) => (

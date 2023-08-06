@@ -16,3 +16,24 @@
     font-size: 45px;
     font-weight: 600;
 }
+
+.options-dashboard {
+    display: flex;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    margin: 15px 0px;
+    background-color: rgba(68, 68, 68, 0.158);
+}
+
+.options-dashboard input {
+    border-radius: 1px;
+    background-color: rgba(0, 0, 0, 0.158);
+    backdrop-filter: blur(10px);
+    border: none;
+    outline: none;
+    height: 45px;
+}
+
+.options-dashboard input::placeholder {
+    color: aliceblue;
+}

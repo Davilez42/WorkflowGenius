@@ -43,6 +43,23 @@ const socketMain = (server) => {
         client.emit("server-error", { messageError: e.message });
       }
     });
+
+    client.on('create-session', async (body) => {
+      try {
+        const { id_dashboard, name } = body.data;
+
+        const session_insert = await dashboardService.setSession(id_dashboard, name);
+
+        client.emit('session-created', {
+          session_insert
+        })
+
+      } catch (e) {
+        client.emit("server-error", { messageError: e.message });
+      }
+    })
+
+
   });
 };
 

@@ -46,6 +46,18 @@ module.exports = dashboardService = (dashBoardModel, dashboardTempleteModel) => 
     });
     const resp = await dash_db.save();
     return resp;
+  },
+  setSession: async (id_dashboard, name) => {
+    const dashboard_db = await dashBoardModel.findById(id_dashboard)
+
+    const _id = new ObjectId()
+
+    const session_insert = { _id, name, tasks: [] }
+    dashboard_db.sesions.push(session_insert)
+
+    await dashboard_db.save()
+
+    return session_insert
   }
 
 }

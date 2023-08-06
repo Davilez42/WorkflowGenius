@@ -1,17 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { createDashboard } from "../../services/createDashboard";
+import { createDashboardService } from "../../services/createDashboard.service";
+import { deleteDashboardService } from "../../services/deleteDashboard.service";
 import { DashboardContext } from "../../context/DashboardContext";
 import "./dashboards.css";
-import { IoIosAdd } from "react-icons/io";
+import { IoIosAdd, IoIosClose } from "react-icons/io";
+
 export default function Dashboards() {
   const { dashboards, setDashboards } = useContext(DashboardContext);
 
   const [nombre, setNombre] = useState("");
   const navigate = useNavigate();
 
-  const crearDashboard = (name) => {
-    createDashboard(setDashboards, name, dashboards);
+  const createDashboard = (name) => {
+    createDashboardService(setDashboards, name, dashboards);
+  };
+
+  const deleteDashboard = (id_dash) => {
+    deleteDashboardService(setDashboards, id_dash, dashboards);
   };
 
   return (
@@ -26,24 +32,33 @@ export default function Dashboards() {
         />
 
         <IoIosAdd
-            size='35px'
+          size="35px"
           className="button_add_dash"
           onClick={() => {
-            crearDashboard(nombre);
+            createDashboard(nombre);
             setNombre("");
           }}
         />
       </div>
 
       {dashboards.map((d) => (
-        <div
-          key={d._id}
-          className="card-dashboard"
-          onClick={() => {
-            navigate(`/home/main/dashboard/${d._id}`);
-          }}
-        >
-          <p>{d.name}</p>
+        <div key={d._id} className="card-dashboard">
+          <div className="card-dashboard-title">
+            <p
+              onClick={() => {
+                navigate(`/home/main/dashboard/${d._id}`);
+              }}
+              className="title-card"
+            >
+              {d.name}
+            </p>
+
+            <IoIosClose
+              size="40"
+              className="button_delete_dash"
+              onClick={() => deleteDashboard(d._id)}
+            />
+          </div>
         </div>
       ))}
     </div>

@@ -1,4 +1,4 @@
-export async function createDashboard(setDashboards, name, dash) {
+export async function createDashboardService(setDashboards, name, dash) {
   //inserto en la base de datos
   const response = await fetch(
     `http://localhost:5000/api/v1/dashboard/create_dashboard`,

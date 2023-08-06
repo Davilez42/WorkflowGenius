@@ -1,15 +1,13 @@
 import { createContext, useEffect, useState } from "react";
-import { getDashboards } from "../services/getDashboard";
+import { getDashboardsService } from "../services/getDashboard.service";
 import { socket } from "../socket";
 export const DashboardContext = createContext();
 
-
 export function DashboardContextProvider(props) {
-
   const [dashboards, setDashboards] = useState([]);
-  
+
   useEffect(() => {
-    getDashboards(setDashboards);
+    getDashboardsService(setDashboards);
   }, []);
 
   socket.on("connect", () => {
@@ -19,8 +17,6 @@ export function DashboardContextProvider(props) {
   socket.on("server-error", (data) => {
     alert(data.messageError);
   });
-
-
 
   return (
     <>

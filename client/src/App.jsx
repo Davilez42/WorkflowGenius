@@ -1,7 +1,4 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Loguin from "./components/auth/Loguin";
 import Register from "./components/auth/Register";
@@ -9,7 +6,6 @@ import Perfil from "./Pages/perfil";
 import Main from "./components/Main";
 import Dashboards from "./components/dashboards/Dashboards";
 import ContentDashboard from "./components/contentDashboard/ContentDashboard";
-
 
 const routes = createBrowserRouter([
   {

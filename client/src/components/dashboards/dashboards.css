@@ -51,3 +51,19 @@
     backdrop-filter: blur(10px);
     background-color: rgba(29, 29, 29, 0.747);
 }
+
+.card-dashboard-title {
+    display: flex;
+    align-items: center;
+    background-color: rgba(19, 20, 20, 0.397);
+
+}
+
+.button_delete_dash {
+    width: 50%;
+    float: right;
+}
+
+.title-card {
+    width: 50%;
+}

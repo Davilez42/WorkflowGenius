@@ -8,8 +8,10 @@
 }
 
 
+
 .navBarDashboard ul li {
     list-style: none;
+    margin: 15px;
 }
 
 .navBarDashboard ul li a {

@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./forms.css";
-import LoguinHandler from "../../services/loguinHandler";
+import loguinHandlerService from "../../services/loguinHandler.service";
 export default function Loguin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -21,8 +21,7 @@ export default function Loguin() {
       setMessage("Porfavor ingrese una contraseña");
       return;
     }
-
-    LoguinHandler(username, password, setMessage, handlerAction);
+    loguinHandlerService(username, password, setMessage, handlerAction);
   };
 
   return (

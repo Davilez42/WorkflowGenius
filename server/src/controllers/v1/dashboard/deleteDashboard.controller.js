@@ -4,7 +4,7 @@ const deleteDashboard = ({ dashboardService }) => async (req, res) => {
     const { id_user } = req
     const { id_dashboard } = req.params
     try {
-        console.log(id_user, id_dashboard);
+
         const dash_db = await dashboardService.getDashboardById(id_dashboard);
 
         if (!dash_db) {
@@ -25,7 +25,7 @@ const deleteDashboard = ({ dashboardService }) => async (req, res) => {
             }
         })
     } catch (e) {
-        return res.status(511).json({
+        return res.status(500).json({
             messageError: "Server error internal"
         })
     }

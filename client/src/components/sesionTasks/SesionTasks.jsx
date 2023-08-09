@@ -19,7 +19,6 @@ export default function SesionTasks({ id_dashboard, id_sesion, tasks, title }) {
         if (d._id === id_dashboard) {
           d.sesions.forEach((s) => {
             if (s._id === id_sesion) {
-              console.log(body);
               s.tasks.push({ ...body.data });
               setTask([...s.tasks]);
             }

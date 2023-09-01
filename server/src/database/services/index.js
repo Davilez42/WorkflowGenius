@@ -2,7 +2,7 @@
 
 //Tools
 const { haspassword } = require("../../tools/hashPassword.tool");
-const { dashboardTempleteModel, } = require("../../helpers/templeteModelDashboard");
+const { dashboardTemplateModel, } = require("../../helpers/templateModelDashboard");
 
 // Models
 const { dashBoardModel, userModel } = require('../Models')
@@ -13,7 +13,7 @@ const userService = require('./users.service')
 
 
 module.exports = {
-    dashboardService: dashboardService(dashBoardModel, dashboardTempleteModel),
+    dashboardService: dashboardService(dashBoardModel, dashboardTemplateModel),
     userService: userService(userModel, haspassword)
 }
 

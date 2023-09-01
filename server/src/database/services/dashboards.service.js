@@ -58,6 +58,15 @@ module.exports = dashboardService = (dashBoardModel, dashboardTemplateModel) => 
     await dashboard_db.save()
 
     return session_insert
+  },
+  deleteSession: async (id_session, id_dashboard) => {
+    const dashb_db = await dashBoardModel.findById(id_dashboard);
+
+    dashb_db.sessions = dashb_db.sessions.filter(s => s._id.toString() !== id_session);
+
+    const { id_aut, updatedAt } = await dashb_db.save()
+
+    return { success: true, id_dashboard, id_session, id_aut, updatedAt }
   }
 
 }

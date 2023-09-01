@@ -1,9 +1,9 @@
 const { ObjectId } = require("mongodb");
 
-function dashboardTempleteModel(dashboard) {
+function dashboardTemplateModel(dashboard) {
   return {
     ...dashboard,
-    sesions: [
+    sessions: [
       {
         _id: new ObjectId(),
         name: "todo",
@@ -42,5 +42,5 @@ function dashboardTempleteModel(dashboard) {
 }
 
 module.exports = {
-  dashboardTempleteModel,
+  dashboardTemplateModel,
 };

@@ -19,7 +19,7 @@ const deleteDashboard = ({ dashboardService }) => async (req, res) => {
         const resp = await dashboardService.deleteDashboard(id_dashboard)
 
         res.status(200).json({
-            succes: true,
+            success: true,
             data: {
                 resp
             }

@@ -2,7 +2,7 @@
 
 const { ObjectId } = require("mongodb");
 
-module.exports = dashboardService = (dashBoardModel, dashboardTempleteModel) => ({
+module.exports = dashboardService = (dashBoardModel, dashboardTemplateModel) => ({
 
   getDashboardsByIdUser: async (id_aut) => {
     return await dashBoardModel.find({ id_aut });
@@ -10,9 +10,9 @@ module.exports = dashboardService = (dashBoardModel, dashboardTempleteModel) => 
   getDashboardById: async (id_dashboard) => {
     return await dashBoardModel.findById(id_dashboard).select('_id id_aut name')
   },
-  creatNewDashboard: async (dashboard) => {
+  createNewDashboard: async (dashboard) => {
     const new_dash = new dashBoardModel(
-      dashboardTempleteModel(dashboard)
+      dashboardTemplateModel(dashboard)
     );
     return await new_dash.save();
   }
@@ -21,14 +21,14 @@ module.exports = dashboardService = (dashBoardModel, dashboardTempleteModel) => 
     return await dashBoardModel.deleteOne({ _id: id_dashboard })
   },
 
-  setTaskinDashboard: async (id_dashboard, id_sesion, title) => {
+  setTaskInDashboard: async (id_dashboard, id_session, title) => {
     const dash_db = await dashBoardModel.findById(id_dashboard);
     if (!dash_db) return;
 
     const _id = new ObjectId();
 
-    dash_db.sesions.map((s) => {
-      if (s._id.toString() === id_sesion) {
+    dash_db.sessions.map((s) => {
+      if (s._id.toString() === id_session) {
         s.tasks.push({ _id, title });
       }
     });
@@ -36,11 +36,11 @@ module.exports = dashboardService = (dashBoardModel, dashboardTempleteModel) => 
     return { _id, title };
   }
   ,
-  deleteTaskDashboard: async (id_dashboard, id_sesion, id_task) => {
+  deleteTaskDashboard: async (id_dashboard, id_session, id_task) => {
     const dash_db = await dashBoardModel.findById(id_dashboard);
     if (!dash_db) return;
-    dash_db.sesions.map((s) => {
-      if (s._id.toString() === id_sesion) {
+    dash_db.sessions.map((s) => {
+      if (s._id.toString() === id_session) {
         s.tasks = s.tasks.filter((t) => t._id.toString() !== id_task);
       }
     });
@@ -53,7 +53,7 @@ module.exports = dashboardService = (dashBoardModel, dashboardTempleteModel) => 
     const _id = new ObjectId()
 
     const session_insert = { _id, name, tasks: [] }
-    dashboard_db.sesions.push(session_insert)
+    dashboard_db.sessions.push(session_insert)
 
     await dashboard_db.save()
 

@@ -5,10 +5,10 @@ const dashboardScheme = new Schema(
   {
     id_aut: { type: Types.ObjectId, ref: "User" },
     name: { type: String, require: true },
-    descripcion: { type: String, require: true },
-    sesions: [
+    description: { type: String, require: true },
+    sessions: [
       {
-        _id: { type: Types.ObjectId},
+        _id: { type: Types.ObjectId },
         name: { type: String, require: true },
         tasks: [
           {

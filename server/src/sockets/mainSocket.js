@@ -3,7 +3,7 @@ const { dashboardService } = require("../database/services/");
 
 const socketMain = (server) => {
   const io = new Server(server); // inicia el socket con el servidor
-  //? Eventps sockets
+  //? Events sockets
   io.on("connection", (client) => {
     console.log(`👤 a user connected ID: ${client.id}`);
     client.on("disconnect", () => {
@@ -14,11 +14,11 @@ const socketMain = (server) => {
 
     client.on("create-task", async (body) => {
       //? CREAR UNA TAREA
-      const { id_dashboard, id_sesion, title } = body.data;
+      const { id_dashboard, id_session, title } = body.data;
       try {
-        const task_created = await dashboardService.setTaskinDashboard(
+        const task_created = await dashboardService.setTaskInDashboard(
           id_dashboard,
-          id_sesion,
+          id_session,
           title
         );
 
@@ -31,11 +31,11 @@ const socketMain = (server) => {
 
     //? ELIMINAR UNA TAREA
     client.on("delete-task", async (body) => {
-      const { id_dashboard, id_sesion, id_task } = body.data;
+      const { id_dashboard, id_session, id_task } = body.data;
       try {
         await dashboardService.deleteTaskDashboard(
           id_dashboard,
-          id_sesion,
+          id_session,
           id_task
         );
         console.log(`👤 a user DELETE a Task ID: ${client.id}`);
@@ -47,13 +47,10 @@ const socketMain = (server) => {
     client.on('create-session', async (body) => {
       try {
         const { id_dashboard, name } = body.data;
-
         const session_insert = await dashboardService.setSession(id_dashboard, name);
-
         client.emit('session-created', {
           session_insert
         })
-
       } catch (e) {
         client.emit("server-error", { messageError: e.message });
       }

@@ -2,7 +2,11 @@ const { Server } = require("socket.io");
 const { dashboardService } = require("../database/services/");
 
 const socketMain = (server) => {
-  const io = new Server(server); // inicia el socket con el servidor
+  const io = new Server(server, {
+    cors: {
+      origin: "*"
+    }
+  }); // inicia el socket con el servidor
   //? Events sockets
   io.on("connection", (client) => {
     console.log(`👤 a user connected ID: ${client.id}`);

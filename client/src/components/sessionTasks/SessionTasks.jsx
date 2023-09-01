@@ -1,70 +1,101 @@
-import { React, useState } from "react";
-import { IoIosAdd, IoIosClose } from "react-icons/io";
+import { React, useState, useEffect } from "react";
+import { IoIosAdd, IoIosClose, IoMdRemove } from "react-icons/io";
 import { useContext } from "react";
 import { DashboardContext } from "../../context/DashboardContext";
-import "./sesionTasks.css";
+import { socket } from "../../socket";
+import "./sessionTasks.css";
 
-export default function SesionTasks({ id_dashboard, id_sesion, tasks, title }) {
+export default function SessionTasks({
+  id_dashboard,
+  id_session,
+  tasks,
+  title,
+}) {
   const [task, setTask] = useState(tasks); //PENDIENTE
 
   const [name, setName] = useState("");
 
-  const { dashboards, socket } = useContext(DashboardContext);
+  const { dashboards } = useContext(DashboardContext);
 
-  const createTask = (title) => {
-    setName("");
-    socket.emit("create-task", { data: { id_dashboard, id_sesion, title } });
-    socket.on("task-created", (body) => {
+  useEffect(() => {
+    socket.on(`task-created-${id_session}`, (body) => {
       dashboards.forEach((d) => {
         if (d._id === id_dashboard) {
-          d.sesions.forEach((s) => {
-            if (s._id === id_sesion) {
+          d.sessions.forEach((s) => {
+            if (s._id === id_session) {
               s.tasks.push({ ...body.data });
               setTask([...s.tasks]);
+              return;
             }
           });
         }
       });
-      socket.off("task-created");
     });
-    socket.off("create-task");
+
+    return () => {
+      socket.off("task-created");
+    };
+  }, [dashboards, id_dashboard, id_session, task]);
+
+  const createTask = (title) => {
+    setName("");
+    socket.emit("create-task", { data: { id_dashboard, id_session, title } });
   };
 
   const deleteTask = (id_task) => {
-    socket.emit("delete-task", { data: { id_dashboard, id_sesion, id_task } });
+    socket.emit("delete-task", { data: { id_dashboard, id_session, id_task } });
     dashboards.forEach((d) => {
       if (d._id === id_dashboard) {
-        d.sesions.forEach((s) => {
-          if (s._id === id_sesion) {
+        d.sessions.forEach((s) => {
+          if (s._id === id_session) {
             s.tasks = s.tasks.filter((t) => t._id.toString() !== id_task);
             setTask(s.tasks);
+            return;
           }
         });
       }
     });
-    socket.off("delete-task");
+  };
+
+  const deleteSession = () => {
+    socket.emit("delete-session", {
+      id_session,
+      id_dashboard,
+    });
   };
 
   return (
     <div className="container-sesion">
-      <div className="cabecera_sesion">
-        <p>{title}</p>
+      <div className="header_session">
+        <div className="title_session">
+          <p>{title}</p>
+        </div>
+        <div
+          className="delete-icon"
+          onClick={() => {
+            deleteSession();
+          }}
+        >
+          <IoIosClose className="icon" size="35px" />
+        </div>
       </div>
+
       <div className="container-card-tasks">
         {task.map((t, i) => (
           <div key={i} id_task={t._id} className="card-task">
-            <div className="titulo_task">{t.title}</div>
+            <div className="title_task">{t.title}</div>
             <div
               className="delete-icon"
               onClick={() => {
                 deleteTask(t._id);
               }}
             >
-              <IoIosClose className="icon" size="40px" />
+              <IoMdRemove className="icon" size="25px" />
             </div>
           </div>
         ))}
       </div>
+
       <div className="options-tasks">
         <input
           className="input_Name_Task"
@@ -78,7 +109,7 @@ export default function SesionTasks({ id_dashboard, id_sesion, tasks, title }) {
         <div
           onClick={() => {
             document.querySelector(".input_Name_Task").value = "";
-            createTask(name, id_dashboard, id_sesion);
+            createTask(name, id_dashboard, id_session);
           }}
           className="icon-add"
         >

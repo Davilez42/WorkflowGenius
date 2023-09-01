@@ -8,13 +8,13 @@ export async function deleteDashboardService(f, id_dash, dashboards) {
         mode: 'cors',
         credentials: "include",
     })
-    //const resps = await resp.json()
+    //const resp = await resp.json()
 
     if (resp.ok) {
-        //console.log(resps);
+        //console.log(resp);
         f(dashboards.filter((d) => d._id !== id_dash));
     } else {
-        //console.log(resps);
+        //console.log(resp);
         alert('No se pudo eliminar el Dashboard')
     }
 

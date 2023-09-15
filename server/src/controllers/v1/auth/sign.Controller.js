@@ -21,11 +21,11 @@ const loginUser = (
       const token = generateToken({ _id: user_db.id });
 
       res.cookie("token", token, {
-        httpOnly: true,
+        httpOnly: false,
       });
 
       return res.status(200).json({
-        succes: true,
+        success: true,
         data: {
           id_user: user_db._id,
           username: user_db.username,

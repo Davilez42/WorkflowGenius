@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { createDashboardService } from "../../services/createDashboard.service";
 import { deleteDashboardService } from "../../services/deleteDashboard.service";
-import { DashboardContext } from "../../context/DashboardContext";
+import { DashboardContext } from "../../context/Dashboard/DashboardContext";
 import "./dashboards.css";
 import { InputAdd } from "../inputAdd/InputAdd";
-import { IoIosClose } from "react-icons/io";
+import { IoIosClose, IoIosList } from "react-icons/io";
 
 export default function Dashboards() {
   const { dashboards, setDashboards } = useContext(DashboardContext);
@@ -22,14 +22,14 @@ export default function Dashboards() {
 
   return (
     <div className="container-dashboards">
-      <p className="title-dashboard">Dashboards Actuales</p>
+      <p className="title-dashboard">Tableros Actuales</p>
       <div className="form_dashboard">
-        <InputAdd valueDefault="agregar dashboard" action={createDashboard} />
+        <InputAdd valueDefault="Crear Tablero" action={createDashboard} />
       </div>
-
       {dashboards.map((d) => (
         <div key={d._id} className="card-dashboard">
           <div className="card-dashboard-title">
+            <IoIosList size="25px" className="icon-card-dashboard" />
             <p
               onClick={() => {
                 navigate(`/home/main/dashboard/${d._id}`);
@@ -38,7 +38,6 @@ export default function Dashboards() {
             >
               {d.name}
             </p>
-
             <IoIosClose
               size="40"
               className="button_delete_dash"

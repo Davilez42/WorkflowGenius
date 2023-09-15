@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
 
-.container-sesion {
+.container-session {
     border-radius: 4px;
     background-color: #ebebebaf;
     height: min-content;
     width: 350px;
     min-width: 320px;
-    max-height: 500px;
+    max-height: 510px;
     backdrop-filter: blur(50px);
 }
 
@@ -39,7 +39,7 @@
     margin: 0 auto;
     margin-top: 15px;
     max-height: 380px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .title_task {

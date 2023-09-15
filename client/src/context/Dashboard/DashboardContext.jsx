@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { getDashboardsService } from "../services/getDashboard.service";
-import { socket } from "../socket";
+import { getDashboardsService } from "../../services/getDashboard.service";
+import { socket } from "../../socket";
+
 export const DashboardContext = createContext();
 
 export function DashboardContextProvider(props) {

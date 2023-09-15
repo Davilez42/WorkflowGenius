@@ -1,6 +1,6 @@
 import SessionTasks from "../sessionTasks/SessionTasks";
 import { useContext, useState, useEffect } from "react";
-import { DashboardContext } from "../../context/DashboardContext";
+import { DashboardContext } from "../../context/Dashboard/DashboardContext";
 import { useParams } from "react-router-dom";
 import { InputAdd } from "../inputAdd/InputAdd";
 import { socket } from "../../socket";
@@ -68,14 +68,14 @@ export default function ContentDashboard() {
         <p>{titleDashboard}</p>
 
         <div className="options-dashboard">
-          <InputAdd valueDefault="agregar sesion" action={newSession} />
+          <InputAdd valueDefault="nueva sesion" action={newSession} />
         </div>
       </div>
       <div className="container-tasks">
-        {sessions.map((s) => (
+        {sessions.map((s, i) => (
           <SessionTasks
             id_dashboard={params.id_dashboard}
-            key={s._id}
+            key={i}
             id_session={s._id}
             tasks={s.tasks}
             title={s.name}

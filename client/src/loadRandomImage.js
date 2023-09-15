@@ -1,13 +1,13 @@
+
 export default async function loadImage() {
-  const container_main = document.querySelector(".container-main");
+  const div_root = document.getElementById('root')
   const data = JSON.parse(window.localStorage.getItem('config'))
-
-
   if (data?.imageBackground) {
-    container_main.style = `background-image: url(${data.imageBackground})`;
+    div_root.style = `background-image: url(${data.imageBackground})`;
   } else {
-    container_main.style = `background-image: url(https://images.unsplash.com/photo-1637080024867-39547bcbc64a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80)`;
-    window.localStorage.setItem('config', JSON.stringify({ imageBackground: 'https://images.unsplash.com/photo-1637080024867-39547bcbc64a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80' }))
+    console.log('entra aqui')
+    div_root.style = `background-image: url(${process.env.REACT_APP_DEFAULT_BACK})`;
+    window.localStorage.setItem('config', JSON.stringify({ imageBackground: process.env.REACT_APP_DEFAULT_BACK }))
   }
 
   setInterval(async () => {
@@ -18,10 +18,8 @@ export default async function loadImage() {
     if (resp.ok) {
       const image = await resp.json();
       const url_image = image.urls.full
-      container_main.style = `background-image: url(${url_image})`;
+      div_root.style = `background-image: url(${url_image})`;
       window.localStorage.setItem('config', JSON.stringify({ imageBackground: url_image }))
     }
-  }, 1000000);
-
-
+  }, 600000);
 }

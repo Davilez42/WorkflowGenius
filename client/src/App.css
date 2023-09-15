@@ -1,26 +1,20 @@
-
-
-  @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 
 * {
-    color: rgb(255, 255, 255);
-    font-family: 'Lato', sans-serif;
+  color: rgb(255, 255, 255);
+  font-family: 'Lato', sans-serif;
 }
+
+#root {
+  height: 778px;
+  width: 100%;
+  object-fit: cover;
+}
+
 body {
-    font-family: 'Lato', sans-serif;
-    margin: 0;
-    background: #ffffff;
-    color:rgb(0, 0, 0);
-
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
 }
-
-
-
-
-
-
-
-
-
-

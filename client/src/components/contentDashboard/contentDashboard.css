@@ -1,6 +1,8 @@
 .content-Dashboard {
     width: 90%;
+    height: max-content;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 
@@ -8,7 +10,9 @@
     display: flex;
     width: 100%;
     gap: 1rem;
+    height: max-content;
     overflow-x: auto;
+    overflow-y: hidden;
     backdrop-filter: blur(25px);
 }
 

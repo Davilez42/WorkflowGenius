@@ -43,6 +43,10 @@
 
 }
 
+.icon-card-dashboard {
+    margin-left: 10px;
+}
+
 .button_delete_dash {
     width: 50%;
     float: right;

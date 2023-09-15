@@ -1,15 +1,6 @@
-header ul {
-
-    display: flex;
-    float: left;
-    gap: 2rem;
-
-}
-
 header {
-    background-color: #ffffff;
+    background-color: rgb(252, 254, 255);
     display: flex;
-
 }
 
 header ul li {
@@ -21,21 +12,11 @@ header ul li {
 
 header ul li a {
     font-weight: 600;
-    color: rgb(39, 39, 39);
+    color: rgb(68, 68, 68);
 }
 
 header ul {
-
     display: flex;
     float: left;
-    gap: 2rem;
-
+    gap: 1rem;
 }
-
-header ul li {
-    list-style: none;
-    float: left;
-    text-decoration: none;
-
-}
-

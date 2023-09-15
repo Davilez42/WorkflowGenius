@@ -1,4 +1,6 @@
-export default async function loguinHandlerService(username, password, handlerMessage, handlerAction) {
+
+
+export default async function loginHandlerService(username, password, setError, handlerAction) {
     const datos = {
         method: "POST",
         mode: "cors",
@@ -8,25 +10,24 @@ export default async function loguinHandlerService(username, password, handlerMe
         credentials: 'include',
         body: JSON.stringify({ username, password }),
     };
-    const respuesta = await fetch('http://localhost:5000/api/v1/user/sign_user', datos)
-    if (respuesta.ok) {
-        const user = await respuesta.json()
-        if (user.succes) {
+    const response = await fetch('http://localhost:5000/api/v1/user/sign_user', datos)
+    if (response.ok) {
+        const user = await response.json()
+        if (user.success) {
             window.sessionStorage.setItem('loggedUser', JSON.stringify(user))
             handlerAction(user.data.id_user)
         } else {
             if (user.status === "USERNAME_NOT_EXIST") {
-                handlerMessage('El usuario no existe')
+                setError('El usuario no existe')
             }
             if (user.status === "PASSWORD_INCORRECT") {
-                handlerMessage('Contraseña Incorrecta')
+                setError('Contraseña Incorrecta')
             }
-
             return;
         }
     }
     else {
-        const json = await respuesta.json()
-        alert(json.messageError)
+        const json = await response.json()
+        setError(json.messageError)
     }
 }

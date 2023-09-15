@@ -1,25 +1,44 @@
 .navBarDashboard {
-    width: 300px;
-    display: flex;
-    gap: 30px;
+    width: 250px;
     background-color: #4d4b4b15;
     backdrop-filter: blur(50px);
 
 }
 
-
+.navBarDashboard ul {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+}
 
 .navBarDashboard ul li {
+    padding-left: 30%;
     list-style: none;
-    margin: 15px;
 }
 
 .navBarDashboard ul li a {
     font-weight: 600;
-    color: rgb(233, 233, 233);
+    color: rgb(211, 211, 211);
 }
 
-.avatar {
-    width: 40%;
-    border-radius: 100px;
+
+
+.img-avatar {
+    width: 100px;
+    align-self: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    border-radius: 50px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.sign-off {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    align-items: center;
+    margin-top: 400px;
 }

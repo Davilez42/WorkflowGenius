@@ -6,9 +6,17 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 1px;
-    margin-top: 4rem;
+    margin-top: 1px;
     border: .001rem solid #cccccc;
     height: min-content;
+}
+
+.mainForms {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 form {
@@ -19,7 +27,7 @@ form {
 
 form label {
     color: black;
-    font-size: 14px;
+    font-size: 20px;
     margin: 3px;
 }
 
@@ -30,22 +38,21 @@ form a {
 
 .container_form h3 {
     color: rgb(0, 0, 0);
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     text-align: center;
 }
 
 .container_form .input {
     display: block;
-    height: 25px;
+    height: 20px;
     width: 240px;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     border-radius: 3px;
-    border: 1px solid rgb(195, 195, 195);
+    border-bottom: 1px solid rgb(195, 195, 195);
     transition: border 0.5s;
-    margin-bottom: 10px;
-    margin-top: 3px;
-
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .container_form form .input {
@@ -55,22 +62,29 @@ form a {
 }
 
 .box_info {
-    width: 30%;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 6px;
+    background-color: rgb(255, 255, 255);
     border: .001rem solid #b8b8b8;
     font-size: 1rem;
     height: min-content;
     padding: 2px;
     text-align: center;
     color: rgb(0, 0, 0);
+    width: 30%;
 }
 
 .container_message p {
     text-align: center;
     color: #ff1500;
+
     background-color: #ffffff;
 
+}
+
+.container_message {
+    height: 20px;
+    margin-top: 5px;
 }
 
 .box_info p {
@@ -88,7 +102,7 @@ form a {
 
 .btn {
     display: block;
-    width: 40%;
+    width: 100%;
     font-size: 14px;
     text-align: center;
     padding-top: 5px;
@@ -97,7 +111,7 @@ form a {
     background-color: #1a30f4;
     height: 25px;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 20px;
     border-radius: 3px;
     border: 0;
@@ -106,20 +120,20 @@ form a {
 
 .btn:hover {
 
-    background-color: rgb(85, 223, 247);
+    background-color: #5566ff;
 }
 
 .input:hover {
-    border: 1px solid rgb(51, 51, 51);
+    border-bottom: 1px solid rgb(51, 51, 51);
 }
 
 .input::placeholder {
-    color: #1c1c1c89;
+    color: #05050589;
     font-size: 12px;
 }
 
 .input:focus {
-    border: 0.1px solid rgb(61, 61, 61);
+    border-bottom: 0.1px solid rgb(61, 61, 61);
     outline: none;
 
 }

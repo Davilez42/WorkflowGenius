@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { IoIosAdd, IoIosClose, IoMdRemove } from "react-icons/io";
 import { useContext } from "react";
-import { DashboardContext } from "../../context/DashboardContext";
+import { DashboardContext } from "../../context/Dashboard/DashboardContext";
 import { socket } from "../../socket";
 import "./sessionTasks.css";
 
@@ -33,9 +33,9 @@ export default function SessionTasks({
     });
 
     return () => {
-      socket.off("task-created");
+      socket.off(`task-created-${id_session}`);
     };
-  }, [dashboards, id_dashboard, id_session, task]);
+  });
 
   const createTask = (title) => {
     setName("");
@@ -65,7 +65,7 @@ export default function SessionTasks({
   };
 
   return (
-    <div className="container-sesion">
+    <div className="container-session">
       <div className="header_session">
         <div className="title_session">
           <p>{title}</p>

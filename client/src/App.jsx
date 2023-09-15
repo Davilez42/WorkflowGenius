@@ -1,25 +1,28 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import Loguin from "./components/auth/Loguin";
+import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Perfil from "./Pages/perfil";
+import { CookiesProvider } from "react-cookie";
 import Main from "./components/Main";
 import Dashboards from "./components/dashboards/Dashboards";
 import ContentDashboard from "./components/contentDashboard/ContentDashboard";
-
+import { useEffect } from "react";
+import loadImage from "./loadRandomImage";
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Loguin />,
+    element: <Login />,
+  },
+
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
-    path: "register",
+    path: "/register",
     element: <Register />,
   },
-  {
-    path: "loguin",
-    element: <Loguin />,
-  },
+
   {
     path: "/home",
     element: <Perfil />,
@@ -43,17 +46,20 @@ const routes = createBrowserRouter([
         path: "Perfil",
         element: <>Perfil</>,
       },
-      {
-        path: "ayuda",
-        element: <>ayuda</>,
-      },
     ],
   },
 ]);
+
 export default function App() {
+  useEffect(() => {
+    loadImage();
+  }, []);
+
   return (
     <>
-      <RouterProvider router={routes} />
+      <CookiesProvider defaultSetOptions={{ path: "/" }}>
+        <RouterProvider router={routes} />
+      </CookiesProvider>
     </>
   );
 }

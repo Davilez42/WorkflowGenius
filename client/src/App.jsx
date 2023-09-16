@@ -8,19 +8,22 @@ import Dashboards from "./components/dashboards/Dashboards";
 import ContentDashboard from "./components/contentDashboard/ContentDashboard";
 import { useEffect } from "react";
 import loadImage from "./loadRandomImage";
+import Index from "./Pages";
+import React from "react";
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
-  },
-
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
+    element: <Index />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
   },
 
   {
@@ -52,14 +55,16 @@ const routes = createBrowserRouter([
 
 export default function App() {
   useEffect(() => {
-    loadImage();
+    //loadImage();
   }, []);
 
   return (
     <>
-      <CookiesProvider defaultSetOptions={{ path: "/" }}>
-        <RouterProvider router={routes} />
-      </CookiesProvider>
+      <React.StrictMode>
+        <CookiesProvider defaultSetOptions={{ path: "/" }}>
+          <RouterProvider router={routes} />
+        </CookiesProvider>
+      </React.StrictMode>
     </>
   );
 }

@@ -1,34 +1,46 @@
-.container_form {
-    color: rgb(0, 0, 0);
-    background-color: #ffffff;
-    width: 30%;
-    filter: blur(.10);
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 1px;
-    margin-top: 1px;
-    border: .001rem solid #cccccc;
-    height: min-content;
-}
-
 .mainForms {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
+    gap: 13rem;
     height: 100%;
 }
 
+.container_form {
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    width: 25%;
+    filter: blur(.10);
+    border-radius: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: .001rem solid #cccccc;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    height: min-content;
+    -webkit-box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.17);
+    -moz-box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.17);
+    box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.17);
+}
+
+
 form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     padding-top: 5px;
-    width: min-content;
-    margin: 0 auto;
+    width: 90%;
 }
 
 form label {
-    color: black;
-    font-size: 20px;
-    margin: 3px;
+    color: rgb(111, 111, 134);
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+    margin: 0 1px;
 }
 
 form a {
@@ -37,22 +49,24 @@ form a {
 }
 
 .container_form h3 {
-    color: rgb(0, 0, 0);
+    color: #3c3f5d;
     font-size: 1.9rem;
+    font-weight: 900;
+    width: 100%;
     text-align: center;
 }
 
 .container_form .input {
     display: block;
-    height: 20px;
-    width: 240px;
+    height: 10px;
+    width: 100%;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     border-radius: 3px;
-    border-bottom: 1px solid rgb(195, 195, 195);
+    border: 2px solid rgb(215, 215, 215);
     transition: border 0.5s;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .container_form form .input {
@@ -62,37 +76,36 @@ form a {
 }
 
 .box_info {
-    margin: 0 auto;
-    margin-top: 6px;
+    width: 100%;
+    margin: 4px;
     background-color: rgb(255, 255, 255);
-    border: .001rem solid #b8b8b8;
     font-size: 1rem;
     height: min-content;
-    padding: 2px;
+
     text-align: center;
+    border-radius: 5px;
     color: rgb(0, 0, 0);
-    width: 30%;
+
 }
 
 .container_message p {
     text-align: center;
     color: #ff1500;
-
     background-color: #ffffff;
-
+    margin: 3px;
 }
 
 .container_message {
-    height: 20px;
-    margin-top: 5px;
+    width: 100%;
+
 }
 
 .box_info p {
     color: black;
     cursor: default;
-    margin: 0;
+    margin: 10px;
     font-size: 14px;
-    padding: 5px;
+
 }
 
 .here {
@@ -101,39 +114,41 @@ form a {
 }
 
 .btn {
-    display: block;
+    display: flex;
     width: 100%;
     font-size: 14px;
-    text-align: center;
-    padding-top: 5px;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     color: rgb(255, 255, 255);
-    background-color: #1a30f4;
-    height: 25px;
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    background-color: #4255ff;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 3px;
     border: 0;
-    transition: all .5;
+    transition: .2s all;
+}
+
+.g_id_signin {
+    width: 100%;
 }
 
 .btn:hover {
-
-    background-color: #5566ff;
+    background-color: #1a30f4;
 }
 
 .input:hover {
-    border-bottom: 1px solid rgb(51, 51, 51);
+    border: 2px solid rgb(121, 121, 121);
 }
 
 .input::placeholder {
-    color: #05050589;
+    color: #05050543;
     font-size: 12px;
 }
 
 .input:focus {
-    border-bottom: 0.1px solid rgb(61, 61, 61);
+    border: 2px solid rgb(43, 43, 43);
     outline: none;
 
 }

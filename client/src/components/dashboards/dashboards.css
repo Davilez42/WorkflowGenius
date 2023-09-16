@@ -10,7 +10,7 @@
 }
 
 .title-dashboard {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 600;
 }
 
@@ -33,13 +33,15 @@
     font-weight: 600;
     border-radius: 1px;
     backdrop-filter: blur(10px);
-    background-color: rgba(29, 29, 29, 0.747);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.986);
 }
 
 .card-dashboard-title {
     display: flex;
+    color: black;
     align-items: center;
-    background-color: rgba(19, 20, 20, 0.397);
+    background-color: rgba(201, 221, 221, 0.397);
 
 }
 

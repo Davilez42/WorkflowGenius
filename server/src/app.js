@@ -15,6 +15,7 @@ const http = require("http");
 const server = http.createServer(app);
 mainSocket(server)
 
+app.disabled('x-Powered-by')
 app.use(logger);
 // PARSERS
 app.use(express.json());

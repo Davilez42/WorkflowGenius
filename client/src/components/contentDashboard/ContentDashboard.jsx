@@ -12,15 +12,13 @@ export default function ContentDashboard() {
   const [titleDashboard, setTitleDashboard] = useState("");
   const { dashboards } = useContext(DashboardContext);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     let dashboard = dashboards.filter((d) => d._id === params.id_dashboard)[0];
-    let sessions_ = [];
     if (dashboard) {
       setTitleDashboard(dashboard.name);
-      sessions_ = dashboard.sessions;
+      setSessions(dashboard.sessions);
     }
-    setSessions(sessions_);
-
     socket.on("session-deleted", (body) => {
       const { success, id_dashboard, id_session } = body.data;
       if (success) {
@@ -51,7 +49,7 @@ export default function ContentDashboard() {
       socket.off("session-deleted");
       socket.off("session-created");
     };
-  }, [dashboards, params.id_dashboard, sessions]);
+  });
 
   const newSession = (name) => {
     socket.emit("create-session", {
@@ -68,7 +66,7 @@ export default function ContentDashboard() {
         <p>{titleDashboard}</p>
 
         <div className="options-dashboard">
-          <InputAdd valueDefault="nueva sesion" action={newSession} />
+          <InputAdd valueDefault="Nueva sesion" action={newSession} />
         </div>
       </div>
       <div className="container-tasks">

@@ -6,7 +6,9 @@ import "./App.css";
 ReactDom.createRoot(document.getElementById("root")).render(
   <>
     <UserContextProvider>
+
       <App />
+
     </UserContextProvider>
   </>
 );

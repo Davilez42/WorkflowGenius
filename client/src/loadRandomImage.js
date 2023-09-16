@@ -1,12 +1,11 @@
 
 export default async function loadImage() {
-  const div_root = document.getElementById('root')
+  const container_main = document.querySelector('.container-main')
   const data = JSON.parse(window.localStorage.getItem('config'))
   if (data?.imageBackground) {
-    div_root.style = `background-image: url(${data.imageBackground})`;
+    container_main.style = `background-image: url(${data.imageBackground})`;
   } else {
-    console.log('entra aqui')
-    div_root.style = `background-image: url(${process.env.REACT_APP_DEFAULT_BACK})`;
+    container_main.style = `background-image: url(${process.env.REACT_APP_DEFAULT_BACK})`;
     window.localStorage.setItem('config', JSON.stringify({ imageBackground: process.env.REACT_APP_DEFAULT_BACK }))
   }
 
@@ -18,8 +17,8 @@ export default async function loadImage() {
     if (resp.ok) {
       const image = await resp.json();
       const url_image = image.urls.full
-      div_root.style = `background-image: url(${url_image})`;
+      container_main.style = `background-image: url(${url_image})`;
       window.localStorage.setItem('config', JSON.stringify({ imageBackground: url_image }))
     }
-  }, 600000);
+  }, 900000);
 }

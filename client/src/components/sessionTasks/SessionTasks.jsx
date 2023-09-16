@@ -18,20 +18,21 @@ export default function SessionTasks({
   const { dashboards } = useContext(DashboardContext);
 
   useEffect(() => {
-    socket.on(`task-created-${id_session}`, (body) => {
-      dashboards.forEach((d) => {
-        if (d._id === id_dashboard) {
-          d.sessions.forEach((s) => {
-            if (s._id === id_session) {
-              s.tasks.push({ ...body.data });
-              setTask([...s.tasks]);
-              return;
-            }
-          });
-        }
+    if (name.length === 0) {
+      socket.on(`task-created-${id_session}`, (body) => {
+        dashboards.forEach((d) => {
+          if (d._id === id_dashboard) {
+            d.sessions.forEach((s) => {
+              if (s._id === id_session) {
+                s.tasks.push({ ...body.data });
+                setTask([...s.tasks]);
+                return;
+              }
+            });
+          }
+        });
       });
-    });
-
+    }
     return () => {
       socket.off(`task-created-${id_session}`);
     };
@@ -39,6 +40,7 @@ export default function SessionTasks({
 
   const createTask = (title) => {
     setName("");
+    document.querySelector(".input_Name_Task").value = "";
     socket.emit("create-task", { data: { id_dashboard, id_session, title } });
   };
 
@@ -108,7 +110,9 @@ export default function SessionTasks({
 
         <div
           onClick={() => {
-            document.querySelector(".input_Name_Task").value = "";
+            document.querySelectorAll(".input_Name_Task").forEach((e) => {
+              e.value = "";
+            });
             createTask(name, id_dashboard, id_session);
           }}
           className="icon-add"

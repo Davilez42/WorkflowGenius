@@ -48,6 +48,15 @@ form a {
     color: #2b74dc;
 }
 
+.container_forget_password {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#forget_password {
+    text-decoration: none;
+}
+
 .container_form h3 {
     color: #3c3f5d;
     font-size: 1.9rem;

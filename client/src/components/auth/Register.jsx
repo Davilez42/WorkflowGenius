@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import { UserContext } from "../../context/auth/userContext";
-import RegisterHandler from "../../services/registerHandler.service";
+import useUser from "../../hooks/useUser";
 import "./forms.css";
 
 export default function Register() {
@@ -12,64 +12,25 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [first_names, setFirstNames] = useState("");
   const [last_names, setLastNames] = useState("");
-
-  const clearFields = () => {
-    setFirstNames("");
-    setLastNames("");
-    setPassword("");
-    setEmail("");
-    setUsername("");
-    setError("");
-    document.querySelector(".input-firstNames").value = "";
-    document.querySelector(".input-lastNames").value = "";
-    document.querySelector(".input-username").value = "";
-    document.querySelector(".input-email").value = "";
-    document.querySelector(".input-password").value = "";
-  };
+  const [textMessage, setErrorMessage] = useState("");
+  const { userRegisterSubmit } = useUser();
 
   const handlerAction = () => {
     setState(true);
-    clearFields();
     navigate("/home/main/dashboards");
   };
-
-  const [error, setError] = useState("");
   const handlerSubmit = () => {
-    setError("");
-
-    if (first_names.trim() === "") {
-      setError("El nombre es incorrecto");
-      return;
-    }
-    if (last_names.trim() === "") {
-      setError("El apellido es incorrecto");
-      return;
-    }
-    if (email.trim() === "") {
-      setError("El email es incorrecto");
-      return;
-    }
-
-    if (username.trim() === "") {
-      setError("El username es requerido");
-      return;
-    }
-    if (password.trim() === "" || password.length < 8) {
-      setError("La contraseña es demasiado corta");
-      return;
-    }
-    setError("");
-
-    RegisterHandler(
+    userRegisterSubmit(
+      { username, password, first_names, last_names, email },
       {
-        username,
-        password,
-        first_names,
-        last_names,
-        email,
-      },
-      handlerAction,
-      setError
+        setEmail,
+        setFirstNames,
+        setLastNames,
+        setPassword,
+        setUsername,
+        handlerAction,
+        setErrorMessage,
+      }
     );
   };
 
@@ -77,7 +38,7 @@ export default function Register() {
     <>
       <div className="container_form">
         <form>
-          <h3>Create account</h3>
+          <h3>Crear cuenta</h3>
           <label htmlFor="input_firstNames">Nombres *</label>
           <input
             id="input_firstNames"
@@ -88,7 +49,7 @@ export default function Register() {
               setFirstNames(e.target.value);
             }}
           ></input>
-          <label htmlFor="input_lastNames">Apellidos </label>
+          <label htmlFor="input_lastNames">Apellidos</label>
           <input
             id="input_lastNames"
             className="input input-lastNames"
@@ -131,7 +92,7 @@ export default function Register() {
             }}
           ></input>
           <div className="container_message">
-            <p>{error}</p>
+            <p>{textMessage}</p>
           </div>
           <div
             className="btn"
@@ -139,14 +100,14 @@ export default function Register() {
               handlerSubmit();
             }}
           >
-            Register
+            registrar
           </div>
         </form>
         <div className="box_info">
           <p>
-            Already have an account ?{" "}
+            Ya tienes una cuenta ?{" "}
             <NavLink className="here" to="/login">
-              Login here
+              Inicia aqui
             </NavLink>{" "}
           </p>
         </div>

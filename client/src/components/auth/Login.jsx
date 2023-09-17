@@ -1,14 +1,14 @@
 import { React, useState, useContext, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./forms.css";
-import loginHandlerService from "../../services/loginHandler.service";
 import { UserContext } from "../../context/auth/userContext";
-
+import useUser from "../../hooks/useUser";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setError] = useState("");
+  const [textMessage, setErrorMessage] = useState("");
   const { state, setState } = useContext(UserContext);
+  const { userLoginSubmit } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,23 +22,15 @@ export default function Login() {
     navigate(`/home/main/dashboards`);
   };
 
-  const senDate = () => {
-    if (username.trim() === "") {
-      setError("Porfavor ingrese un nombre de usuario");
-      return;
-    }
-    if (password.trim() === "") {
-      setError("Porfavor ingrese una contraseña");
-      return;
-    }
-    loginHandlerService(username, password, setError, handlerAction);
+  const handlerSubmit = () => {
+    userLoginSubmit(username, password, { handlerAction, setErrorMessage });
   };
 
   return (
     <>
       <div className="container_form">
         <form>
-          <h3>Sign in</h3>
+          <h3>Ingresar</h3>
           <label htmlFor="input_username"> Usuario o correo</label>
           <input
             id="input_username"
@@ -55,13 +47,16 @@ export default function Login() {
             type="password"
             placeholder="Password"
           ></input>
-          <NavLink to="/">Olvidastes tu contraseña?</NavLink>
-          <br />
           <div className="container_message">
-            <p>{message}</p>
+            <p>{textMessage}</p>
           </div>
-          <div onClick={senDate} className="btn">
-            Login
+          <div className="container_forget_password">
+            <NavLink id="forget_password" to="/">
+              Olvidastes tu contraseña?
+            </NavLink>
+          </div>
+          <div onClick={handlerSubmit} className="btn">
+            iniciar
           </div>
         </form>
         <div className="container_btn_google">
@@ -86,9 +81,9 @@ export default function Login() {
         </div>
         <div className="box_info">
           <p>
-            Don't have an account ?{" "}
+            No tienes una cuenta?{" "}
             <NavLink className="here" to="/register">
-              Register here
+              Registrate aqui
             </NavLink>{" "}
           </p>
         </div>

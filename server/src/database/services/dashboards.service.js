@@ -1,9 +1,6 @@
-
-
 const { ObjectId } = require("mongodb");
 
 module.exports = dashboardService = (dashBoardModel, dashboardTemplateModel) => ({
-
   getDashboardsByIdUser: async (id_aut) => {
     return await dashBoardModel.find({ id_aut });
   },
@@ -21,8 +18,9 @@ module.exports = dashboardService = (dashBoardModel, dashboardTemplateModel) => 
     return await dashBoardModel.deleteOne({ _id: id_dashboard })
   },
 
-  setTaskInDashboard: async (id_dashboard, id_session, title) => {
+  setTaskInSession: async (id_dashboard, id_session, title) => {
     const dash_db = await dashBoardModel.findById(id_dashboard);
+    console.log(dash_db);
     if (!dash_db) return;
 
     const _id = new ObjectId();
@@ -36,7 +34,7 @@ module.exports = dashboardService = (dashBoardModel, dashboardTemplateModel) => 
     return { _id, title };
   }
   ,
-  deleteTaskDashboard: async (id_dashboard, id_session, id_task) => {
+  deleteTaskOfSession: async (id_dashboard, id_session, id_task) => {
     const dash_db = await dashBoardModel.findById(id_dashboard);
     if (!dash_db) return;
     dash_db.sessions.map((s) => {
@@ -68,6 +66,5 @@ module.exports = dashboardService = (dashBoardModel, dashboardTemplateModel) => 
 
     return { success: true, id_dashboard, id_session, id_aut, updatedAt }
   }
-
 }
 )

@@ -7,7 +7,7 @@ const logger = require("./middlewares/logger");
 const cookieParser = require("cookie-parser");
 const mainSocket = require('./sockets/mainSocket')
 const config = require("../configs/config");
-const routesv1 = require("./routes/v1");
+const routesV1 = require("./routes/v1");
 const app = express();
 
 //CONFIGURACION SOCKETS
@@ -29,7 +29,7 @@ app.use(cors(config.CONFIG_CORS));
 app.get("/", (req, res) => {
   return res.json({ message: " Welcome To 📕 WorkflowGenius Server !" });
 });
-app.use("/api/v1", routesv1);
+app.use("/api/v1", routesV1);
 app.use(routeNotFoundHandler);
 
 module.exports = server;

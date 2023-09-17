@@ -1,20 +1,26 @@
-import { React, useContext } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/auth/userContext";
 import { useCookies } from "react-cookie";
 import { IoIosLogOut } from "react-icons/io";
 import "./navbarleft.css";
+
 export default function NavbarDashboard() {
   const { setState } = useContext(UserContext);
+  const [url_image, setUrl] = useState("");
   const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [cookie, setCookie, removeCookie] = useCookies();
 
-  const user = JSON.parse(sessionStorage.getItem("loggedUser"));
+  useEffect(() => {
+    const user = JSON.parse(sessionStorage.getItem("loggedUser"));
+    setUrl(user?.data?.id_avatar);
+  }, [url_image]);
+
   return (
     <div className="navBarDashboard">
       <nav>
         <ul>
-          <img src={user?.data?.id_avatar} alt="" className="img-avatar" />
+          <img src={url_image} alt="" className="img-avatar" />
           <li>
             <NavLink
               to="/home/main/dashboards"
@@ -28,7 +34,7 @@ export default function NavbarDashboard() {
               to="/home/main/dashboards"
               style={{ textDecoration: "none" }}
             >
-              Mensajes
+              Notificaciones
             </NavLink>
           </li>
           <li

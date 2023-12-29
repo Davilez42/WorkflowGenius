@@ -1,11 +1,10 @@
-const config = require("../../configs/config");
 const mongoose = require("mongoose")
-
+require('dotenv').config()
 
 const connectDb = async () => {
   console.log("⏳  WorkflowGenius: DB connecting ⏱️");
   mongoose
-    .connect(config.URI_DB)
+    .connect(process.env.MONGO_DB_URI)
     .then(() => {
       console.log("✔️  WorkflowGenius: connection established");
 

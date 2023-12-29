@@ -1,5 +1,5 @@
 //tools
-const authProcedures = require("../../procedures/responseServer/auth.procedure");
+const authProcedures = require("../../responseTemplate/responseServer/auth.procedure");
 const tools = require("../../tools/")
 
 //SERVICES DB

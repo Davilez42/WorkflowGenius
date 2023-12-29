@@ -2,7 +2,6 @@ const registerUser = (
   { userService },
   { generateToken },
   { userNameAlreadyExist, emailAlreadyExist }) =>
-
   async (req, res) => {
     //?  controller for register users
     try {

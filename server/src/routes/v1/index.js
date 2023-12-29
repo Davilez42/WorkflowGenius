@@ -4,8 +4,8 @@ const validators = require('../../middlewares/paramsValidators.js')
 const { validateToken } = require('../../middlewares/valdiateToken')
 
 //decorators 
-const authDecorator = require('./auth.routes')
-const dashboardDecorator = require('./dashboard.routes')
+const authDecorator = require('./auth.routes.js')
+const dashboardDecorator = require('./dashboard.routes.js')
 
 //routes
 const auth = Router()

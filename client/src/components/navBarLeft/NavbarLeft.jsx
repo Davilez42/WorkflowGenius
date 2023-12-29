@@ -46,7 +46,7 @@ export default function NavbarDashboard() {
               navigate("/login");
             }}
           >
-            <NavLink style={{ textDecoration: "none" }}>cerrar Sesion</NavLink>
+            <NavLink style={{ textDecoration: "none" }}>Cerrar sesion</NavLink>
             <IoIosLogOut size="20px" />
           </li>
         </ul>

@@ -54,10 +54,6 @@ const routes = createBrowserRouter([
 ]);
 
 export default function App() {
-  useEffect(() => {
-    //loadImage();
-  }, []);
-
   return (
     <>
       <React.StrictMode>

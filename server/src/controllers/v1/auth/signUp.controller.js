@@ -1,5 +1,5 @@
 const registerUser = (
-  { userService },
+  { userService, dashboardService },
   { generateToken },
   { userNameAlreadyExist, emailAlreadyExist }) =>
   async (req, res) => {
@@ -16,12 +16,19 @@ const registerUser = (
           return res.status(200).json(userNameAlreadyExist());
         }
       }
+      await dashboardService.createNewDashboard({
+        name: 'Workflowgenius',
+        description: '',
+        id_aut: user_created._id
+      })
+
       const token = generateToken({ _id: user_created.id });
 
       res.cookie('token', token)
 
       return res.status(200).json({
         success,
+        csrftoken: token,
         data: {
           _id: user_created._id,
           username: user_created.username,
@@ -33,7 +40,7 @@ const registerUser = (
       });
     } catch (e) {
       console.log(e);
-      return res.status(500).json({ messageError: e.message });
+      return res.status(500).json({ errorMessage: e.message });
     }
   };
 module.exports = registerUser;

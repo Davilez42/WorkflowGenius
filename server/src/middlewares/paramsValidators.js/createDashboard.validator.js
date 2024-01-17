@@ -6,11 +6,11 @@ const createDashParamValidator = (req, res, next) => {
     if (!name || !description) {
       throw new handlerError(
         400,
-        "keys invalid, keys valid:[name,descriptions]"
+        "keys invalid, keys valid:[name,description]"
       );
     }
     if (name.trim() === "") {
-      throw new handlerError(422, "name is empty ");
+      throw new handlerError(422, "name is empty");
     }
     next();
   } catch (e) {

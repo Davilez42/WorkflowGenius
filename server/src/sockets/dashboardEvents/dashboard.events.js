@@ -1,8 +1,9 @@
 const { dashboardService } = require("../../database/services");
 
 module.exports = dashboardEvents = (client) => {
+    //? CREATE A TASK
     client.on("create-task", async (body) => {
-        //? CREATE A TASK
+
         try {
             const { id_dashboard, id_session, title } = body.data;
 
@@ -14,7 +15,7 @@ module.exports = dashboardEvents = (client) => {
             client.emit(`task-created-${id_session}`, { data: task_created });
             console.log(`👤 a user CREATE a Task ID: ${client.id}`);
         } catch (e) {
-            client.emit("server-error", { messageError: e.message });
+            client.emit("server-error", { errorMessage: e.message });
         }
     });
     //? DELETE  A TASK
@@ -30,7 +31,7 @@ module.exports = dashboardEvents = (client) => {
             );
             console.log(`👤 a user DELETE a Task ID: ${client.id}`);
         } catch (e) {
-            client.emit("server-error", { messageError: e.message });
+            client.emit("server-error", { errorMessage: e.message });
         }
     });
 
@@ -45,7 +46,7 @@ module.exports = dashboardEvents = (client) => {
             })
             console.log(`👤 a user CREATE a Session ID: ${client.id}`);
         } catch (e) {
-            client.emit("server-error", { messageError: e.message });
+            client.emit("server-error", { errorMessage: e.message });
         }
     })
 
@@ -63,7 +64,7 @@ module.exports = dashboardEvents = (client) => {
             console.log(`👤 a user DELETE a Session ID: ${client.id}`);
             return;
         } catch (e) {
-            client.emit("server-error", { messageError: e.message });
+            client.emit("server-error", { errorMessage: e.message });
         }
     })
 }

@@ -26,6 +26,7 @@ const loginUser = (
 
       return res.status(200).json({
         success: true,
+        csrftoken: token,
         data: {
           id_user: user_db._id,
           username: user_db.username,

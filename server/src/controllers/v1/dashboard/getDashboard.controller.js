@@ -6,8 +6,7 @@ const getDashboards = ({ dashboardService }) => async (req, res) => {
 
     return res.status(200).json({ success: true, data: { dashboards_user } });
   } catch (e) {
-    console.log(e);
-    return res.status(500).json(e.message);
+    return res.status(500).json({ errorMessage: e.message });
   }
 };
 

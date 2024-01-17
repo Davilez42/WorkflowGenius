@@ -1,5 +1,6 @@
 //tools
-const authProcedures = require("../../responseTemplate/responseServer/auth.procedure");
+const userResponses = require("../../responseTemplate/user.responses");
+const dashboardResponses = require("../../responseTemplate/dashboard.responses")
 const tools = require("../../tools/")
 
 //SERVICES DB
@@ -14,9 +15,9 @@ const deleteDashboard = require('./dashboard/deleteDashboard.controller')
 
 //INYECTO DEPENDENCIAS
 module.exports = {
-    signUser: signUser(services, tools, authProcedures),
-    signUpUser: signUpUser(services, tools, authProcedures),
-    createDashboard: createDashboard(services),
-    getDashboards: getDashboards(services),
-    deleteDashboard: deleteDashboard(services)
+    signUser: signUser(services, tools, userResponses),
+    signUpUser: signUpUser(services, tools, userResponses),
+    createDashboard: createDashboard(services, dashboardResponses),
+    getDashboards: getDashboards(services, dashboardResponses),
+    deleteDashboard: deleteDashboard(services, dashboardResponses)
 }

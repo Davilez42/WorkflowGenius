@@ -2,7 +2,7 @@ const userNotExist = (message) => {
   return {
     success: false,
     status: "USERNAME_NOT_EXIST",
-    message: "The user not found",
+    message: "user not found",
   };
 };
 

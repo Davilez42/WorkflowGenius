@@ -20,7 +20,7 @@ module.exports = dashboardService = (dashBoardModel, dashboardTemplateModel) => 
 
   setTaskInSession: async (id_dashboard, id_session, title) => {
     const dash_db = await dashBoardModel.findById(id_dashboard);
-    console.log(dash_db);
+
     if (!dash_db) return;
 
     const _id = new ObjectId();

@@ -1,7 +1,7 @@
 const Router = require('express')
 const controllers = require('../../controllers/v1/index')
 const validators = require('../../middlewares/paramsValidators.js')
-const { validateToken } = require('../../middlewares/valdiateToken')
+const { validateToken } = require('../../middlewares/validateToken')
 
 //decorators 
 const authDecorator = require('./auth.routes.js')

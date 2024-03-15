@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-
+import { SlOptions } from "react-icons/sl";
 import { DashboardContext } from "../../context/Dashboard/DashboardContext";
 import "./dashboards.css";
-import { InputAdd } from "../inputAdd/InputAdd";
+
 import { IoIosClose, IoIosList } from "react-icons/io";
 import useDashboard from "../../hooks/useDashboards";
 export default function Dashboards() {
@@ -33,34 +33,37 @@ export default function Dashboards() {
   };
 
   return (
-    <div className="container-dashboards">
-      <p className="title-dashboard">Tableros Actuales</p>
+    <div className="block-dashboards">
+      <p className="title-dashboard">Tableros</p>
       <div className="form_dashboard">
-        <InputAdd
-          valueDefault="Crear Tablero"
-          action={createDashboardHandler}
+        <input type="text" onChange={(e) => {}} />
+        <input
+          type="button"
+          value="crear"
+          onClick={() => {
+            createDashboardHandler("test", " ");
+          }}
         />
       </div>
-      {dashboards.map((d) => (
-        <div key={d._id} className="card-dashboard">
-          <div className="card-dashboard-title">
-            <IoIosList size="25px" className="icon-card-dashboard" />
-            <p
-              onClick={() => {
-                navigate(`/home/main/dashboard/${d._id}`);
-              }}
-              className="title-card"
-            >
-              {d.name}
-            </p>
-            <IoIosClose
-              size="40"
-              className="button_delete_dash"
-              onClick={() => deleteDashboardHandler(d._id)}
-            />
+      <div className="container-dashboards">
+        {dashboards.map((d) => (
+          <div key={d._id} className="card-dashboard">
+            <div className="card-dashboard-title">
+              <IoIosList size="25px" className="icon-card-dashboard" />
+              <p
+                onClick={() => {
+                  navigate(`/home/main/dashboard/${d._id}`);
+                }}
+                className="title-card"
+              >
+                {d.name}
+              </p>
+            </div>
+            <div className="info-autor">Creado por {d.id_aut}</div>
+            <SlOptions size={20} />
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,29 +1,25 @@
 .box-Info-index {
     width: 500px;
     height: 500px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
 }
 
 .box-Info-index h2 {
     font-size: 60px;
     margin: 0;
-    text-shadow: 1px 1px 3px #424249;
-    color: #3c3f5d;
-
+    color: #f0f0f0;
     font-weight: 900;
 }
 
 .box-Info-index h4 {
     font-size: 30px;
-    text-shadow: 1px 1px 1px #424249;
     margin: 0;
-    color: #40425e;
+    color: #f0f0f0;
     font-weight: 900;
 }
 
 .box-Info-index p {
-    font-size: 16px;
-    font-weight: 600;
-    color: #5c5578;
+    font-size: 18px;
+    color: #f0f0f0;
 
 }

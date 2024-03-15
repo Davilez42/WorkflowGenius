@@ -1,30 +1,70 @@
 .content-Dashboard {
-    width: 90%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 83%;
     height: max-content;
-    overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 
-.container-tasks {
+.container-sections {
+    position: relative;
     display: flex;
     width: 100%;
-    gap: 1rem;
-    height: max-content;
+    padding-top: 20px;
+    gap: 10px;
+    height: 460px;
     overflow-x: auto;
-    overflow-y: hidden;
+    scrollbar-width: thin;
+    border-top: 1px solid rgb(209, 209, 209);
     backdrop-filter: blur(25px);
 }
 
+.block-info-dash {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .Title {
+    margin: 0;
     font-size: 45px;
     font-weight: 600;
 }
 
-.options-dashboard {
+.icon-options-dashboard {
+    cursor: pointer;
+}
+
+.container-members {
     display: flex;
     align-items: center;
-    color: rgb(255, 255, 255);
-    margin: 15px 0px;
-    background-color: rgb(197, 197, 197);
+    flex-direction: row;
+}
+
+.icon-member-dashboard {
+    border-radius: 100px;
+    height: 40px;
+    width: 40px;
+}
+
+
+
+.form-section {
+    display: flex;
+    flex-direction: row;
+    min-width: 280px;
+}
+
+.input-name-section {
+    margin: 0;
+}
+
+.button-create-section {
+    color: aliceblue;
+    cursor: pointer;
+    background-color: rgb(84, 84, 84);
 }

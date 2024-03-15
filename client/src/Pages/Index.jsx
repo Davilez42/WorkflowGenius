@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import NavbarIndex from "../components/navBarIndex/NavbarIndex";
 import BoxInfo from "../components/boxInfo/BoxInfo";
+import Navbar from "../components/navbar/Navbar";
 export default function Index() {
   const navigate = useNavigate();
   useEffect(() => {
@@ -12,7 +12,7 @@ export default function Index() {
   }, []);
   return (
     <>
-      <NavbarIndex />
+      <Navbar />
       <div className="mainForms">
         {<BoxInfo />}
         {<Outlet />}

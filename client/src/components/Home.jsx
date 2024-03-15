@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import NavbarLeft from "./navBarLeft/NavbarLeft";
 import { DashboardContextProvider } from "../context/Dashboard/DashboardContext";
-import "./main.css";
+import "./home.css";
 
 export default function Home() {
   return (

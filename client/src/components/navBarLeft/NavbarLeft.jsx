@@ -26,14 +26,14 @@ export default function NavbarDashboard() {
               Tableros
             </NavLink>
           </li>
-          <li>
+          {/*         <li>
             <NavLink
               to="/home/main/dashboards"
               style={{ textDecoration: "none" }}
             >
               Notificaciones
             </NavLink>
-          </li>
+          </li> */}
           <li
             className="sign-off"
             onClick={() => {

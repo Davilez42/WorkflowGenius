@@ -1,12 +1,16 @@
+.block-dashboards {
+    width: 84%;
+}
+
 .container-dashboards {
     display: flex;
-    text-align: center;
-    flex-wrap: wrap;
+    width: 100%;
     gap: 1rem;
-    height: min-content;
-    width: 90%;
-
-
+    flex-direction: column;
+    min-height: min-content;
+    max-height: 475px;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 .title-dashboard {
@@ -19,35 +23,32 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    height: min-content;
 }
 
 
 
 
 .card-dashboard {
-    text-align: center;
-    height: 120px;
-    width: 300px;
-    cursor: pointer;
-    font-weight: 600;
-    border-radius: 1px;
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 45px;
     backdrop-filter: blur(10px);
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.986);
+    border-radius: 1px;
+    background-color: rgba(226, 226, 226, 0.397);
 }
 
 .card-dashboard-title {
     display: flex;
+    margin-left: 10px;
+    width: 30%;
+    text-align: center;
+    font-weight: 600;
     color: black;
     align-items: center;
-    background-color: rgba(201, 221, 221, 0.397);
-
 }
 
-.icon-card-dashboard {
-    margin-left: 10px;
-}
 
 .button_delete_dash {
     width: 50%;
@@ -56,4 +57,5 @@
 
 .title-card {
     width: 50%;
+    margin: 0;
 }

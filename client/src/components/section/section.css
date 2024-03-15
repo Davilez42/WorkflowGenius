@@ -2,11 +2,12 @@
 
 .container-session {
     border-radius: 4px;
-    background-color: #ebebebaf;
+    background-color: #f4f4f4f1;
     height: min-content;
-    width: 350px;
-    min-width: 320px;
-    max-height: 510px;
+    width: 280px;
+    min-width: 280px;
+    max-height: 500px;
+    border: 1px solid rgb(209, 209, 209);
     backdrop-filter: blur(50px);
 }
 
@@ -25,7 +26,7 @@
 }
 
 .header_session {
-    background-color: #ebebeb;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     min-height: 2rem;
@@ -34,12 +35,15 @@
 .container-card-tasks {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
     margin: 0 auto;
     margin-top: 15px;
-    max-height: 380px;
+    min-height: 50px;
+    max-height: 320px;
     overflow-y: auto;
+    background-color: #f4f4f4f1;
+    scrollbar-width: thin;
 }
 
 .title_task {
@@ -59,23 +63,31 @@
     display: flex;
     align-items: center;
     height: 50px;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     cursor: pointer;
     padding-left: 20px;
     background-color: #ffffff;
-    border-radius: 5px;
+    border-radius: 1px;
+    border: 1px solid rgb(203, 203, 203);
+    box-shadow: -2px 2px 12px -2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: -2px 2px 12px -2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: -2px 2px 12px -2px rgba(0, 0, 0, 0.3);
 }
 
 .options-tasks {
-    margin-top: 20px;
-    height: 60px;
-    background-color: rgba(243, 243, 243, 0);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .icon-add {
     float: right;
-
+    cursor: pointer;
     margin-top: 5px;
 }
 
@@ -83,39 +95,34 @@
     fill: rgb(0, 0, 0);
 }
 
-.options-tasks input {
+.input_Name_Task {
     float: left;
-    width: 60%;
-    margin-top: 10px;
+    width: 80%;
+
     color: #222222;
-    background-color: #cecece;
+    background-color: #eeeeee;
     border: none;
-    height: 30px;
+    height: 40px;
     padding-left: 10px;
-    border-radius: 50px;
-    margin-left: 15px;
+    border-radius: 1px;
     transition: .5s all;
 }
 
-.options-tasks input:hover {
-    color: #cecece;
-    background-color: #4d4d4d;
+.input_Name_Task:hover {
+    color: #222222;
+    background-color: #dedede;
 }
 
-.options-tasks input::after {
+.input_Name_Task::after {
     color: #222222;
 }
 
-.options-tasks input::placeholder {
+.input_Name_Task::placeholder {
     color: #222222;
 }
 
-.options-tasks input:focus {
+.input_Name_Task:focus {
     outline: none;
-    background-color: #222222;
-    color: #cecece;
-}
-
-.options-tasks p {
-    margin: 0;
+    background-color: #dadada;
+    color: #222222;
 }

@@ -1,6 +1,13 @@
+/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
-import { socket } from "../../socket";
+
 import useDashboard from "../../hooks/useDashboards";
+
+import { io } from "socket.io-client";
+const socket = io(import.meta.env.VITE_API_URL, {
+  auth: { token: window.sessionStorage.getItem("csrftoken") },
+  autoConnect: false,
+});
 
 export const DashboardContext = createContext();
 

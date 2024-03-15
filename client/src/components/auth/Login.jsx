@@ -51,7 +51,7 @@ export default function Login() {
           </div>
           <div className="container_forget_password">
             <NavLink id="forget_password" to="/">
-              Olvidastes tu contraseña?
+              Olvidastes tu contraseña ?
             </NavLink>
           </div>
           <div onClick={handlerSubmit} className="btn">
@@ -65,7 +65,7 @@ export default function Login() {
         </div>
         <div className="box_info">
           <p>
-            No tienes una cuenta?{" "}
+            No tienes una cuenta ?{" "}
             <NavLink className="here" to="/register">
               Registrate aqui
             </NavLink>{" "}

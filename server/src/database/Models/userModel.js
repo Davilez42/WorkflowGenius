@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 require('dotenv').config()
 const userScheme = new Schema(
   {
@@ -12,6 +12,7 @@ const userScheme = new Schema(
       type: String,
       default: process.env.URL_DEFAULT_AVATAR
     },
+    dashboards: [{ type: Types.ObjectId, ref: 'Dashboard' }],
   },
   {
     timestamps: true,

@@ -6,13 +6,15 @@ const dashboardScheme = new Schema(
     id_aut: { type: Types.ObjectId, ref: "User" },
     name: { type: String, require: true },
     description: { type: String, require: true },
-    sessions: [
+    members: [{
+      user: { type: Types.ObjectId, ref: 'User' },
+      role: { type: String, require: true, }
+    }],
+    sections: [
       {
-        _id: { type: Types.ObjectId },
         name: { type: String, require: true },
         tasks: [
           {
-            _id: { type: Types.ObjectId },
             title: { type: String, require: true },
             description: { type: String, require: true },
           },

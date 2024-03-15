@@ -13,7 +13,7 @@ const userService = require('./users.service')
 
 
 module.exports = {
-    dashboardService: dashboardService(dashBoardModel, dashboardTemplateModel),
+    dashboardService: dashboardService({ dashBoardModel, userModel }, dashboardTemplateModel),
     userService: userService(userModel, haspassword)
 }
 
